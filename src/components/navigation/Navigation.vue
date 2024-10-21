@@ -18,12 +18,13 @@ const closeNavigation = () => {
 
 <template>
   <div>
-    <div
-        v-if="isOpen"
-        class="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden transition-opacity duration-300"
-        :class="{ 'opacity-0': !isOpen, 'opacity-100': isOpen }"
-        @click="closeNavigation"
-    ></div>
+    <Transition name="fade">
+      <div
+          v-show="isOpen"
+          class="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden"
+          @click="closeNavigation"
+      ></div>
+    </Transition>
 
     <nav
         :class="[
@@ -42,5 +43,13 @@ const closeNavigation = () => {
 </template>
 
 <style scoped>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
 
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
 </style>
