@@ -1,0 +1,26 @@
+{
+  "common": {
+
+  },
+  "pages": {
+    "login": {
+      "title": "Welcome back!",
+      "email": "Email address",
+      "password": "Password",
+      "login": "Login",
+      "forgotPassword": "Forgot password ?",
+      "credentialsError": "Invalid email or password"
+    },
+    "404": {
+      "text": "Hmmm... It seems that this page doesn't exist. Try searching for something else."
+    }
+  },
+  "components": {
+    "loginButton": {
+      "label": "Sign in"
+    },
+    "BackToDashboardButton": {
+      "label": "Back to dashboard"
+    }
+  }
+}
