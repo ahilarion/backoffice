@@ -25,7 +25,7 @@ const login = (email: string, password: string) => {
 
 <template>
   <div class="w-full flex">
-    <div class="w-full lg:w-1/2 h-screen flex items-center justify-center">
+    <div class="w-full lg:w-1/2 h-screen flex items-center justify-center bg-base-100">
       <router-link to="/" class="absolute top-4 left-8">
         <Logo class="w-16 h-16" />
       </router-link>

@@ -11,6 +11,9 @@
       "forgotPassword": "Forgot password ?",
       "credentialsError": "Invalid email or password"
     },
+    "dashboard": {
+      "title": "Dashboard"
+    },
     "404": {
       "text": "Hmmm... It seems that this page doesn't exist. Try searching for something else."
     }
