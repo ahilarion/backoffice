@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import DayDetailsEvent from "@/components/calendar/DayDetailsEvent.vue";
 import {
-  formatTime,
   formatDate,
-  getEventColor,
   sortEventsByStartTime,
   type Event
 } from "@/utils/calendar";
@@ -48,12 +47,14 @@ defineExpose({
 </script>
 
 <template>
-  <!-- Overlay -->
-  <div
-      v-if="isOpen"
-      class="fixed inset-0 bg-black bg-opacity-25 z-40"
-      @click="closeDayDetails"
-  />
+  <!-- Overlay with Transition -->
+  <Transition name="fade">
+    <div
+        v-show="isOpen"
+        class="fixed inset-0 bg-black bg-opacity-25 z-40"
+        @click="closeDayDetails"
+    />
+  </Transition>
 
   <!-- Aside Panel -->
   <aside
@@ -61,45 +62,42 @@ defineExpose({
       :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }"
   >
     <!-- Header -->
-    <header class="p-4 border-b flex justify-between items-center">
-      <h2 class="text-lg font-semibold">{{ formattedDate }}</h2>
-      <button
-          @click="closeDayDetails"
-          class="p-2 hover:bg-gray-100 rounded-full"
-      >
-        <font-awesome-icon
-            :icon="['fas', 'times']"
-            class="h-5 w-5 text-gray-500"
-        />
-      </button>
+    <header class="p-4 border-b">
+      <!-- Mobile Header -->
+      <div class="sm:hidden flex items-center justify-between">
+        <button
+            @click="closeDayDetails"
+            class="p-2 hover:bg-gray-100 rounded-full transition-colors"
+        >
+          <font-awesome-icon
+              :icon="['fas', 'times']"
+              class="h-5 w-5 text-gray-500"
+          />
+        </button>
+        <h2 class="text-lg font-semibold">{{ formattedDate }}</h2>
+        <div class="w-9"></div> <!-- Spacer for centering -->
+      </div>
+
+      <!-- Desktop Header -->
+      <div class="hidden sm:flex justify-between items-center">
+        <h2 class="text-lg font-semibold">{{ formattedDate }}</h2>
+        <button
+            @click="closeDayDetails"
+            class="p-2 hover:bg-gray-100 rounded-full transition-colors"
+        >
+          <font-awesome-icon
+              :icon="['fas', 'times']"
+              class="h-5 w-5 text-gray-500"
+          />
+        </button>
+      </div>
     </header>
 
     <!-- Content -->
     <div class="flex-1 overflow-y-auto p-4">
       <template v-if="sortedEvents.length">
         <div v-for="event in sortedEvents" :key="event.id" class="mb-4">
-          <div
-              class="p-4 rounded-lg border"
-              :style="{
-              borderLeftWidth: '4px',
-              borderLeftColor: getEventColor(event.category)
-            }"
-          >
-            <div class="font-semibold mb-1">{{ event.title }}</div>
-            <div class="text-sm text-gray-600 mb-2">
-              {{ formatTime(event.start) }} - {{ formatTime(event.end) }}
-            </div>
-            <div class="text-sm text-gray-700">{{ event.description }}</div>
-            <div
-                class="mt-2 text-xs inline-block px-2 py-1 rounded-full"
-                :style="{
-                backgroundColor: getEventColor(event.category) + '15',
-                color: getEventColor(event.category)
-              }"
-            >
-              {{ event.category }}
-            </div>
-          </div>
+          <DayDetailsEvent :event="event" />
         </div>
       </template>
 
@@ -118,3 +116,15 @@ defineExpose({
     </footer>
   </aside>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

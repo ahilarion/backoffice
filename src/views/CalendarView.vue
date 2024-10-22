@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import DayDetails from "@/components/calendar/DayDetails.vue";
+import CalendarHeader from "@/components/calendar/CalendarHeader.vue";
+import CalendarCategories from "@/components/calendar/CalendarCategories.vue";
+import DayEventsList from "@/components/calendar/DayEventsList.vue";
 import {
   WEEK_DAYS,
-  CATEGORIES,
   getDaysInMonth,
   getFirstDayOfMonth,
   getPreviousMonthDays,
   getCurrentMonthDays,
   getNextMonthDays,
-  getFormattedEvents,
-  getEventColor,
-  formatTime,
   type Event,
   type DayItem
 } from "@/utils/calendar";
@@ -94,7 +93,7 @@ const days = computed<DayItem[]>(() => {
   return [...previousDays, ...currentDays, ...nextDays];
 });
 
-// Actions
+// Methods
 const changeMonth = (increment: number) => {
   const newDate = new Date(selectedDate.value);
   newDate.setMonth(newDate.getMonth() + increment);
@@ -105,9 +104,9 @@ const nextMonth = () => changeMonth(1);
 const prevMonth = () => changeMonth(-1);
 
 const handleDayClick = (item: DayItem) => {
-  if (!item.isOutside && dayDetailsRef.value) {
+  if (!item.isOutside && dayDetailsRef.value && item.date) {
     dayDetailsRef.value.showDayDetails({
-      date: item.date!,
+      date: item.date,
       events: item.events || []
     });
   }
@@ -118,52 +117,13 @@ const handleDayClick = (item: DayItem) => {
   <div class="flex flex-col">
     <!-- Header Section -->
     <div class="flex flex-col gap-4">
-      <header class="flex justify-between items-center">
-        <h1 class="text-xl md:text-2xl font-bold text-gray-900">
-          <span class="hidden md:inline">{{ currentMonth.full }}</span>
-          <span class="md:hidden">{{ currentMonth.short }}</span>
-          {{ currentYear }}
-        </h1>
+      <CalendarHeader
+          :selected-date="selectedDate"
+          @next-month="nextMonth"
+          @prev-month="prevMonth"
+      />
 
-        <div class="flex items-center gap-2">
-          <button
-              v-for="(action, key) in { prev: prevMonth, next: nextMonth }"
-              :key="key"
-              @click="action"
-              class="h-8 w-8 md:h-9 md:w-9 flex items-center justify-center rounded-lg bg-base-100 hover:bg-gray-100 border"
-          >
-            <font-awesome-icon
-                :icon="['fas', `chevron-${key === 'prev' ? 'left' : 'right'}`]"
-                class="h-3 w-3 md:h-4 md:w-4"
-            />
-          </button>
-
-          <button class="h-8 md:h-9 px-3 md:px-4 bg-gray-900 text-white text-xs md:text-sm rounded-lg hover:bg-gray-800 flex items-center justify-center">
-            Create Event
-          </button>
-        </div>
-      </header>
-
-      <!-- Categories Section -->
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0 pb-4 md:pb-6">
-        <div class="flex gap-1.5 md:gap-2 items-center overflow-x-auto max-w-full pb-2 md:pb-0 hide-scrollbar">
-          <div
-              v-for="category in CATEGORIES"
-              :key="category.name"
-              class="px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-white shadow-sm border flex items-center gap-1.5 md:gap-2 text-xs md:text-sm whitespace-nowrap"
-          >
-            <div
-                class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full"
-                :style="{ backgroundColor: category.color }"
-            />
-            {{ category.name }}
-          </div>
-
-          <button class="px-2 md:px-3 py-1 md:py-1.5 rounded-full bg-white shadow-sm border text-xs md:text-sm text-blue-600 whitespace-nowrap">
-            +Add New
-          </button>
-        </div>
-      </div>
+      <CalendarCategories />
     </div>
 
     <!-- Calendar Grid -->
@@ -208,53 +168,11 @@ const handleDayClick = (item: DayItem) => {
             </span>
 
             <!-- Events -->
-            <div v-if="!item.isOutside" class="flex flex-col gap-1 overflow-hidden">
-              <!-- Mobile: Dots with overflow -->
-              <div class="md:hidden">
-                <div class="flex gap-0.5 flex-wrap items-center">
-                  <div
-                      v-for="event in getFormattedEvents(item.events).visibleEvents"
-                      :key="event.id"
-                      class="w-1.5 h-1.5 rounded-full"
-                      :style="{ backgroundColor: getEventColor(event.category) }"
-                  />
-                  <span
-                      v-if="getFormattedEvents(item.events).overflow > 0"
-                      class="text-[10px] text-gray-500 ml-1"
-                  >
-                    +{{ getFormattedEvents(item.events).overflow }}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Desktop: Event rectangles with overflow -->
-              <div class="hidden md:flex md:flex-col gap-1">
-                <div
-                    v-for="event in getFormattedEvents(item.events).visibleEvents"
-                    :key="event.id"
-                    class="px-1.5 py-1 rounded text-xs hover:bg-opacity-30 transition-colors cursor-pointer group"
-                    :style="{
-                    backgroundColor: getEventColor(event.category) + '33',
-                    borderLeft: `2px solid ${getEventColor(event.category)}`
-                  }"
-                >
-                  <div class="font-medium truncate">{{ event.title }}</div>
-                  <div class="text-[10px] text-gray-600 truncate">
-                    {{ formatTime(event.start) }} - {{ formatTime(event.end) }}
-                  </div>
-                </div>
-
-                <!-- Overflow indicator -->
-                <div
-                    v-if="getFormattedEvents(item.events).overflow > 0"
-                    class="text-xs text-gray-500 px-1.5 py-0.5"
-                >
-                  <span class="font-medium">
-                    + {{ getFormattedEvents(item.events).overflow }} other{{ getFormattedEvents(item.events).overflow > 1 ? 's' : '' }}
-                  </span>
-                </div>
-              </div>
-            </div>
+            <DayEventsList
+                v-if="!item.isOutside"
+                :events="item.events"
+                :is-compact="true"
+            />
           </div>
 
           <!-- Outside Day Overlay -->
@@ -267,7 +185,6 @@ const handleDayClick = (item: DayItem) => {
       </div>
     </div>
 
-    <!-- Day Details Side Panel -->
     <DayDetails ref="dayDetailsRef" />
   </div>
 </template>
