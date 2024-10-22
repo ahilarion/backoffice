@@ -59,7 +59,7 @@ onBeforeUnmount(() => {
     <div ref="dropdownRef" class="relative">
       <button @click="toggleDropdown" class="flex items-center gap-2">
         <img src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />
-        <span class="text-sm font-medium text-gray-600">Acme Inc.</span>
+        <span class="text-sm font-medium text-gray-600">John Doe</span>
         <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-3 w-3 text-gray-400 lg:mt-1" />
       </button>
 

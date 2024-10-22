@@ -423,7 +423,7 @@ const handleDayClick = (item: DayItem) => {
 
 <template>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col gap-4">
 
     <!-- Header Section -->
 
@@ -440,8 +440,6 @@ const handleDayClick = (item: DayItem) => {
       />
 
       <CalendarCategories />
-
-      <TodayEvents :events="events" />
     </div>
 
 
@@ -561,6 +559,8 @@ const handleDayClick = (item: DayItem) => {
       </div>
 
     </div>
+
+    <TodayEvents :events="events" />
 
     <!-- Day Details Side Panel -->
 
