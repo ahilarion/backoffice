@@ -8,9 +8,9 @@ import { CATEGORIES } from "@/utils/calendar";
 
 <template>
 
-  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0 pb-4 md:pb-6">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0">
 
-    <div class="flex gap-1.5 md:gap-2 items-center overflow-x-auto max-w-full pb-2 md:pb-0 hide-scrollbar">
+    <div class="flex gap-1.5 md:gap-2 items-center overflow-x-auto max-w-full hide-scrollbar">
 
       <div
 

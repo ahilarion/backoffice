@@ -23,6 +23,7 @@ import {
   type DayItem
 
 } from "@/utils/calendar";
+import TodayEvents from "@/components/calendar/TodayEvents.vue";
 
 
 
@@ -127,6 +128,76 @@ const events = ref<Event[]>([
     "start": "2024-11-15T10:00:00",
 
     "end": "2024-11-15T11:00:00",
+
+    "description": "Test event for November",
+
+    "category": "Meetings"
+
+  },{
+
+    "id": 6,
+
+    "title": "Test November Event",
+
+    "start": "2024-10-22T10:00:00",
+
+    "end": "2024-10-22T11:00:00",
+
+    "description": "Test event for November",
+
+    "category": "Meetings"
+
+  },{
+
+    "id": 6,
+
+    "title": "Test November Event",
+
+    "start": "2024-10-22T10:00:00",
+
+    "end": "2024-10-22T11:00:00",
+
+    "description": "Test event for November",
+
+    "category": "Meetings"
+
+  },{
+
+    "id": 6,
+
+    "title": "Test November Event",
+
+    "start": "2024-10-22T10:00:00",
+
+    "end": "2024-10-22T11:00:00",
+
+    "description": "Test event for November",
+
+    "category": "Meetings"
+
+  },{
+
+    "id": 6,
+
+    "title": "Test November Event",
+
+    "start": "2024-10-22T10:00:00",
+
+    "end": "2024-10-22T11:00:00",
+
+    "description": "Test event for November",
+
+    "category": "Meetings"
+
+  },{
+
+    "id": 6,
+
+    "title": "Test November Event",
+
+    "start": "2024-10-22T10:00:00",
+
+    "end": "2024-10-22T11:00:00",
 
     "description": "Test event for November",
 
@@ -368,10 +439,9 @@ const handleDayClick = (item: DayItem) => {
 
       />
 
-
-
       <CalendarCategories />
 
+      <TodayEvents :events="events" />
     </div>
 
 
@@ -415,6 +485,8 @@ const handleDayClick = (item: DayItem) => {
             :key="index"
 
             class="relative bg-white border-r border-b last:border-r-0"
+
+            :class="isSameDate(item.date, new Date()) ? 'bg-blue-50' : ''"
 
         >
 
@@ -489,8 +561,6 @@ const handleDayClick = (item: DayItem) => {
       </div>
 
     </div>
-
-
 
     <!-- Day Details Side Panel -->
 
