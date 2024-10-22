@@ -9,6 +9,12 @@ import router from './router'
 
 import en from './locales/en.json'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faChevronDown)
+
 const app = createApp(App)
 const i18n = createI18n({
     legacy: false,
@@ -19,6 +25,7 @@ const i18n = createI18n({
     }
 })
 
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(i18n)
 app.use(createPinia())
 app.use(router)

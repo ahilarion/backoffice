@@ -5,11 +5,11 @@ export const useAuthStore = defineStore('auth', {
         isAuthenticated: false
     }),
     actions: {
-        login(email: string, password: string) {
+        async login(email: string, password: string) {
             this.isAuthenticated = true
             localStorage.setItem('auth_token', '123456')
         },
-        logout() {
+        async logout() {
             this.isAuthenticated = false
             localStorage.removeItem('auth_token')
         },

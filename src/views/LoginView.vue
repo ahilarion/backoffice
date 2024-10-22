@@ -16,9 +16,12 @@ const loading = ref(false);
 const login = (email: string, password: string) => {
   loading.value = true;
   setTimeout(() => {
-    loading.value = false;
-    authStore.login(email, password);
-    router.push('/');
+    authStore.login(email, password).then(() => {
+      loading.value = false;
+      router.push('/');
+    }).catch(() => {
+      loading.value = false;
+    });
   }, 2000);
 }
 </script>
