@@ -11,9 +11,11 @@ import en from './locales/en.json'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChartLine } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faChevronDown)
+
+library.add(faChevronDown, faChartLine, faCalendar)
 
 const app = createApp(App)
 const i18n = createI18n({
