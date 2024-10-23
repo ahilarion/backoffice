@@ -10,7 +10,7 @@ export const useCustomerStore = defineStore('customer', {
             this.loading = true
             const response = await fetch('https://randomuser.me/api/?results=15')
             this.loading = false
-            const data = []
+            const data = await response.json()
             this.customers = data.results
         }
     }

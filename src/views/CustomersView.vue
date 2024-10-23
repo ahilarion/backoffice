@@ -51,7 +51,7 @@ onMounted(() => {
       <template #header>
         <CustomHeader>
           <CustomHeaderItem class="w-3/12 min-w-[200px]">Name</CustomHeaderItem>
-          <CustomHeaderItem class="w-4/12">Email</CustomHeaderItem>
+          <CustomHeaderItem class="w-4/12 min-w-[200px]">Email</CustomHeaderItem>
           <CustomHeaderItem class="w-1/12">Orders</CustomHeaderItem>
           <CustomHeaderItem class="w-2/12">Last Orders</CustomHeaderItem>
           <CustomHeaderItem class="w-2/12">Total Spent</CustomHeaderItem>
