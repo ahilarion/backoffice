@@ -4,6 +4,7 @@ import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { useAuthStore } from "@/stores/auth";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import { useRouter } from "vue-router";
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   isNavigationOpen: boolean
@@ -13,10 +14,12 @@ const emit = defineEmits<{
   (e: 'toggleNavigation'): void
 }>();
 
+const { locale } = useI18n()
 const isDropdownOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
 const authStore = useAuthStore()
 const router = useRouter()
+const currentLanguage = ref(locale.value)
 
 const toggleNavigation = () => {
   emit('toggleNavigation');
@@ -38,6 +41,14 @@ const logout = () => {
   })
 }
 
+const handleLanguageChange = () => {
+  const newLanguage = currentLanguage.value === 'fr' ? 'en' : 'fr'
+  locale.value = newLanguage
+  currentLanguage.value = newLanguage
+
+  localStorage.setItem('language', newLanguage)
+}
+
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
 })
@@ -57,11 +68,17 @@ onBeforeUnmount(() => {
     </button>
 
     <div ref="dropdownRef" class="relative">
-      <button @click="toggleDropdown" class="flex items-center gap-2">
-        <img src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />
-        <span class="text-sm font-medium text-gray-600">John Doe</span>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-3 w-3 text-gray-400 lg:mt-1" />
-      </button>
+      <div class="flex items-center gap-4">
+        <button @click="handleLanguageChange">
+          <span class="text-sm font-semibold text-gray-600 cursor-pointer">{{ currentLanguage.toUpperCase() }}</span>
+        </button>
+        <span class="w-[1px] h-8 bg-gray-200"></span>
+        <button @click="toggleDropdown" class="flex items-center gap-2">
+          <img src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />
+          <span class="text-sm font-medium text-gray-600">John Doe</span>
+          <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-3 w-3 text-gray-400 lg:mt-1" />
+        </button>
+      </div>
 
       <Transition
           enter-active-class="transition ease-out duration-200"

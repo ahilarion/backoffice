@@ -8,6 +8,7 @@ import App from './App.vue'
 import router from './router'
 
 import en from './locales/en.json'
+import fr from './locales/fr.json'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -16,15 +17,20 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 library.add(faChevronDown, faChartLine, faUser, faMagnifyingGlass)
 
-const app = createApp(App)
+const savedLanguage = localStorage.getItem('language')
+const defaultLocale = savedLanguage && ['fr', 'en'].includes(savedLanguage) ? savedLanguage : 'en'
+
 const i18n = createI18n({
     legacy: false,
-    locale: 'en',
+    locale: defaultLocale,
     fallbackLocale: 'en',
     messages: {
-        en
+        en,
+        fr
     }
 })
+
+const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(i18n)

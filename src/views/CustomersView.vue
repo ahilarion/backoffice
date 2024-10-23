@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onMounted } from "vue";
+import { watch } from "vue";
 import SearchInput from "@/components/commons/SearchInput.vue";
 import ActionButton from "@/components/commons/ActionButton.vue";
 import CustomTable from "@/components/table/CustomTable.vue";
@@ -42,6 +43,14 @@ onMounted(() => {
   customerStore.fetchCustomers().then((data) => {
     customers.value = customerStore.customers;
   });
+})
+
+watch(search, (value) => {
+  if (value) {
+    console.log(value);
+  } else {
+    console.log('Search cleared');
+  }
 })
 
 </script>
