@@ -17,7 +17,7 @@ const customerStore = useCustomerStore();
 const search = ref<string>('');
 const customers = ref<any[]>([]);
 const currentPage = ref<number>(1);
-const perPage = 15;
+const perPage = 12;
 const total = 100;
 
 const handleAction = () => {
@@ -47,7 +47,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <h1 class="text-3xl font-semibold">Customers</h1>
       <div class="flex flex-wrap gap-4">
@@ -55,7 +55,7 @@ onMounted(() => {
         <ActionButton @action="handleAction" label="Add customer" />
       </div>
     </div>
-    <CustomTable :columns="['Name', 'Email', 'Orders', 'Action']" title="All customers" :count="customers.length" :loading="customerStore.loading" minHeight="840px" minWidth="1340px">
+    <CustomTable :columns="['Name', 'Email', 'Orders', 'Action']" title="All customers" :count="customers.length" :loading="customerStore.loading" minHeight="672px" minWidth="1340px">
       <template #header>
         <CustomHeader>
           <CustomHeaderItem class="w-3/12 min-w-[200px]">Name</CustomHeaderItem>
