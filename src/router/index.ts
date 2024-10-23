@@ -17,9 +17,9 @@ const router = createRouter({
           component: () => import('@/views/DashboardView.vue')
         },
         {
-          path: 'calendar',
-          name: 'Calendar',
-          component: () => import('@/views/CalendarView.vue')
+          path: 'customers',
+          name: 'Customers',
+          component: () => import('@/views/CustomersView.vue')
         },
         {
           path: ':pathMatch(.*)*',
