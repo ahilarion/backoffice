@@ -10,7 +10,9 @@ import { useCustomerStore } from "@/stores/customer";
 import CustomHeaderItem from "@/components/table/CustomHeaderItem.vue";
 import CustomHeader from "@/components/table/CustomHeader.vue";
 import CustomPagination from "@/components/table/CustomPagination.vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const customerStore = useCustomerStore();
 const search = ref<string>('');
 const customers = ref<any[]>([]);
@@ -28,6 +30,12 @@ const handlePrev = () => {
 
 const handleNext = () => {
   currentPage.value += 1;
+}
+
+const handleRowClick = (e: MouseEvent, uuid) => {
+  if ((e.target as HTMLElement).tagName !== 'A') {
+    router.push(`/customers/${uuid}`);
+  }
 }
 
 onMounted(() => {
@@ -58,7 +66,8 @@ onMounted(() => {
         </CustomHeader>
       </template>
       <template #body>
-        <CustomRow v-for="customer in customers" :key="customer.name" :is-last="customer === customers[customers.length - 1]">
+        <CustomRow class="cursor-pointer hover:bg-gray-50 transition-all"
+                   v-for="customer in customers" :key="customer.name" :is-last="customer === customers[customers.length - 1]" @click="handleRowClick($event, customer.login.uuid)">
           <CustomRowItem class="text-gray-800 font-medium flex items-center gap-2">
             <img :src="customer.picture.thumbnail" alt="avatar" class="w-8 h-8 rounded-full" />
             {{ customer.name.first }} {{ customer.name.last }}
