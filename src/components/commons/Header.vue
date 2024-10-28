@@ -93,17 +93,17 @@ onBeforeUnmount(() => {
           <div class="py-1" role="menu">
             <div class="px-4 py-2 text-sm flex flex-col gap-1">
               <p class="font-medium">John Doe</p>
-              <p class="italic text-xs text-gray-500">Administrator</p>
+              <p class="italic text-xs text-gray-500">{{ $t('common.roles.admin') }}</p>
             </div>
 
             <div class="border-t border-gray-200"></div>
 
             <router-link to="/settings" class="block px-4 py-2 text-sm text-indigo-600 hover:bg-gray-100" role="menuitem">
-              Settings
+              {{ $t('header.settings') }}
             </router-link>
 
             <p @click="logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" role="menuitem">
-              Sign Out
+              {{ $t('header.logout') }}
             </p>
           </div>
         </div>

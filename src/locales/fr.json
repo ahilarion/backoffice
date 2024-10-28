@@ -1,34 +1,65 @@
 {
   "common": {
-
-  },
-  "pages": {
-    "login": {
-      "title": "Welcome back!",
-      "email": "Email address",
-      "password": "Password",
-      "login": "Login",
-      "forgotPassword": "Forgot password ?",
-      "credentialsError": "Invalid email or password"
+    "roles": {
+      "admin": "Administrateur"
     },
-    "dashboard": {
-      "title": "Dashboard"
+    "actions": {
+      "back": "Retour",
+      "search": "Rechercher",
+      "add": "Ajouter"
     },
-    "404": {
-      "text": "Hmmm... It seems that this page doesn't exist. Try searching for something else."
-    }
-  },
-  "components": {
-    "loginButton": {
-      "label": "Sign in"
-    },
-    "BackToDashboardButton": {
-      "label": "Back to dashboard"
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "showing": {
+        "start": "Affichage de",
+        "to": "à",
+        "of": "sur",
+        "entries": "éléments"
+      }
     }
   },
   "navigation": {
-    "items": {
-      "customers": "Clients"
+    "dashboard": "Tableau de bord",
+    "customers": "Clients"
+  },
+  "header": {
+    "settings": "Paramètres",
+    "logout": "Déconnexion"
+  },
+  "errors": {
+    "404": "Hmmm... Il semble que cette page n'existe pas. Essayez de chercher autre chose.",
+    "auth": {
+      "invalidCredentials": "Email ou mot de passe invalide"
+    }
+  },
+  "pages": {
+    "auth": {
+      "login": {
+        "title": "Bon retour !",
+        "forgotPassword": "Mot de passe oublié ?",
+        "form": {
+          "email": "Adresse email",
+          "password": "Mot de passe",
+          "submit": "Connexion"
+        }
+      }
+    },
+    "dashboard": {
+      "title": "Tableau de bord"
+    },
+    "customers": {
+      "title": "Clients",
+      "list": {
+        "title": "Tous les clients",
+        "columns": {
+          "name": "Nom",
+          "email": "Email",
+          "orders": "Commandes",
+          "lastOrder": "Dernière commande",
+          "totalSpent": "Total dépensé"
+        }
+      }
     }
   }
 }

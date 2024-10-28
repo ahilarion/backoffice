@@ -1,34 +1,65 @@
 {
   "common": {
-
+    "roles": {
+      "admin": "Administrator"
+    },
+    "actions": {
+      "back": "Back",
+      "search": "Search",
+      "add": "Add"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "showing": {
+        "start": "Showing",
+        "to": "to",
+        "of": "of",
+        "entries": "entries"
+      }
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "customers": "Customers"
+  },
+  "header": {
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "errors": {
+    "404": "Hmm... It seems this page doesn't exist. Try searching for something else.",
+    "auth": {
+      "invalidCredentials": "Invalid email or password"
+    }
   },
   "pages": {
-    "login": {
-      "title": "Welcome back!",
-      "email": "Email address",
-      "password": "Password",
-      "login": "Login",
-      "forgotPassword": "Forgot password ?",
-      "credentialsError": "Invalid email or password"
+    "auth": {
+      "login": {
+        "title": "Welcome back!",
+        "forgotPassword": "Forgot password?",
+        "form": {
+          "email": "Email address",
+          "password": "Password",
+          "submit": "Login"
+        }
+      }
     },
     "dashboard": {
       "title": "Dashboard"
     },
-    "404": {
-      "text": "Hmmm... It seems that this page doesn't exist. Try searching for something else."
-    }
-  },
-  "components": {
-    "loginButton": {
-      "label": "Sign in"
-    },
-    "BackToDashboardButton": {
-      "label": "Back to dashboard"
-    }
-  },
-  "navigation": {
-    "items": {
-      "customers": "Customers"
+    "customers": {
+      "title": "Customers",
+      "list": {
+        "title": "All customers",
+        "columns": {
+          "name": "Name",
+          "email": "Email",
+          "orders": "Orders",
+          "lastOrder": "Last order",
+          "totalSpent": "Total spent"
+        }
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: string
+  modelValue: string,
+  placeholder?: string
 }>();
 
 const emit = defineEmits<{
@@ -22,7 +23,7 @@ const onInput = (event: Event) => {
         type="text"
         maxlength="64"
         class="w-full pl-10 pr-4 py-2 text-sm bg-base-100 font-medium text-gray-800 border border-gray-200 rounded-md outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent"
-        placeholder="Search..."
+        :placeholder="placeholder"
     />
   </div>
 </template>

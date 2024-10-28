@@ -33,23 +33,23 @@ const login = (email: string, password: string) => {
         <Logo class="w-16 h-16" />
       </router-link>
       <div class="w-96 p-6">
-        <h1 class="text-3xl font-bold mb-6">{{ $t('pages.login.title') }}</h1>
+        <h1 class="text-3xl font-bold mb-6">{{ $t('pages.auth.login.title') }}</h1>
         <form @submit.prevent="login(email, password)" class="space-y-6">
-          <FormInput :label="$t('pages.login.email')" type="email" v-model="email" required />
-          <FormInput :label="$t('pages.login.password')" type="password" v-model="password" required />
+          <FormInput :label="$t('pages.auth.login.form.email')" type="email" v-model="email" required />
+          <FormInput :label="$t('pages.auth.login.form.password')" type="password" v-model="password" required />
           <transition name="error-transition">
             <div v-if="loading" class="bg-error p-2 rounded-md bg-opacity-10 overflow-hidden">
               <p>
                 <XMarkIcon class="h-5 w-5 inline-block text-error" />
-                <span class="text-sm text-error">{{ $t('pages.login.credentialsError') }}</span>
+                <span class="text-sm text-error">{{ $t('errors.auth.invalidCredentials') }}</span>
               </p>
             </div>
           </transition>
           <div class="flex justify-between items-center">
             <p class="text-sm text-gray-600 cursor-pointer hover:underline">
-              {{ $t('pages.login.forgotPassword') }}
+              {{ $t('pages.auth.login.forgotPassword') }}
             </p>
-            <FormSubmitButton :loading="loading" />
+            <FormSubmitButton :loading="loading" :label="$t('pages.auth.login.form.submit')" />
           </div>
         </form>
       </div>

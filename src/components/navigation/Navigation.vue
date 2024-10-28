@@ -35,8 +35,8 @@ const closeNavigation = () => {
     >
       <Logo class="ml-2"/>
       <NavigationCategory title="Pages">
-        <NavigationItem to="/" :icon="['fas' ,'chart-line']" label="Dashboard" />
-        <NavigationItem to="/customers" :icon="['far' ,'user']" :label="$t('navigation.items.customers')" />
+        <NavigationItem to="/" :icon="['fas' ,'chart-line']" :label="$t('navigation.dashboard')" />
+        <NavigationItem to="/customers" :icon="['far' ,'user']" :label="$t('navigation.customers')" />
       </NavigationCategory>
     </nav>
   </div>

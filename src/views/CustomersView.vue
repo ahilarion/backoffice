@@ -58,20 +58,20 @@ watch(search, (value) => {
 <template>
   <div class="flex flex-col gap-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
-      <h1 class="text-3xl font-semibold">Customers</h1>
+      <h1 class="text-3xl font-semibold">{{ $t('pages.customers.title') }}</h1>
       <div class="flex flex-wrap gap-4">
-        <SearchInput v-model="search" />
-        <ActionButton @action="handleAction" label="Add customer" />
+        <SearchInput v-model="search" :placeholder="$t('common.actions.search')" />
+        <ActionButton @action="handleAction" :label="$t('common.actions.add')" />
       </div>
     </div>
-    <CustomTable :columns="['Name', 'Email', 'Orders', 'Action']" title="All customers" :count="customers.length" :loading="customerStore.loading" minHeight="672px" minWidth="1340px">
+    <CustomTable :title="$t('pages.customers.list.title')" :count="customers.length" :loading="customerStore.loading" minHeight="672px" minWidth="1340px">
       <template #header>
         <CustomHeader>
-          <CustomHeaderItem class="w-3/12 min-w-[200px]">Name</CustomHeaderItem>
-          <CustomHeaderItem class="w-4/12 min-w-[200px]">Email</CustomHeaderItem>
-          <CustomHeaderItem class="w-1/12">Orders</CustomHeaderItem>
-          <CustomHeaderItem class="w-2/12">Last Orders</CustomHeaderItem>
-          <CustomHeaderItem class="w-2/12">Total Spent</CustomHeaderItem>
+          <CustomHeaderItem class="w-3/12 min-w-[200px]">{{ $t('pages.customers.list.columns.name') }}</CustomHeaderItem>
+          <CustomHeaderItem class="w-4/12 min-w-[200px]">{{ $t('pages.customers.list.columns.email') }}</CustomHeaderItem>
+          <CustomHeaderItem class="w-1/12">{{ $t('pages.customers.list.columns.orders') }}</CustomHeaderItem>
+          <CustomHeaderItem class="w-2/12">{{ $t('pages.customers.list.columns.lastOrder') }}</CustomHeaderItem>
+          <CustomHeaderItem class="w-2/12">{{ $t('pages.customers.list.columns.totalSpent') }}</CustomHeaderItem>
         </CustomHeader>
       </template>
       <template #body>
