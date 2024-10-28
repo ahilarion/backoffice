@@ -64,7 +64,7 @@ watch(search, (value) => {
         <ActionButton @action="handleAction" :label="$t('common.actions.add')" />
       </div>
     </div>
-    <CustomTable :title="$t('pages.customers.list.title')" :count="customers.length" :loading="customerStore.loading" minHeight="672px" minWidth="1340px">
+    <CustomTable :title="$t('pages.customers.list.title')" :count="customers.length" :loading="customerStore.loading">
       <template #header>
         <CustomHeader>
           <CustomHeaderItem class="w-3/12 min-w-[200px]">{{ $t('pages.customers.list.columns.name') }}</CustomHeaderItem>
