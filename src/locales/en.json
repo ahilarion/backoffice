@@ -48,6 +48,18 @@
     "dashboard": {
       "title": "Dashboard"
     },
+    "settings": {
+      "title": "Account Settings",
+      "myAccount": {
+        "title": "My Account",
+        "form": {
+          "firstName": "First name",
+          "lastName": "Last name",
+          "email": "Email address",
+          "submit": "Save changes"
+        }
+      }
+    },
     "customers": {
       "title": "Customers",
       "list": {

@@ -22,6 +22,18 @@ const router = createRouter({
           component: () => import('@/views/CustomersView.vue')
         },
         {
+          path: 'settings',
+          name: 'Settings',
+          component: () => import('@/views/Settings/SettingsView.vue'),
+          children: [
+            {
+              path: '',
+              name: 'AccountSettings',
+              component: () => import('@/views/Settings/AccountSettingsView.vue')
+            }
+          ]
+        },
+        {
           path: ':pathMatch(.*)*',
           name: 'NotFound',
           component: () => import('@/views/NotFoundView.vue')

@@ -7,7 +7,8 @@ const props = defineProps<{
   modelValue: string | number,
   required?: boolean,
   maxLength?: number,
-  minLength?: number
+  minLength?: number,
+  placeholder?: string
 }>()
 
 const emit = defineEmits(['update:modelValue'])
@@ -34,6 +35,7 @@ const value = computed({
         :required="props.required"
         :maxLength="props.maxLength ?? 255"
         :minLength="props.minLength"
+        :placeholder="props.placeholder"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400 sm:text-sm">
   </div>
 </template>

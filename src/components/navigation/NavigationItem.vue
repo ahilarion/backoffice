@@ -22,7 +22,7 @@ const isActive = computed(() => {
     :class="{ 'bg-primary bg-opacity-10': isActive }"
   >
     <font-awesome-icon :icon="icon" class="w-4 h-4 text-gray-400" :class="{ 'text-primary': isActive }" />
-    <span>{{ props.label }}</span>
+    <span class="text-gray-800">{{ props.label }}</span>
   </router-link>
 </template>
 
