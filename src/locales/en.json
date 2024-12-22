@@ -1,4 +1,8 @@
 {
+  "languages": {
+    "english": "English",
+    "french": "French"
+  },
   "common": {
     "roles": {
       "admin": "Administrator"
@@ -76,6 +80,8 @@
           "firstName": "First name",
           "lastName": "Last name",
           "email": "Email address",
+          "changePassword": "Change password",
+          "language": "Language",
           "submit": "Save changes"
         }
       }

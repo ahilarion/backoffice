@@ -87,7 +87,7 @@ watch(search, (value) => {
               @click="handleRowClick($event, user.id)"
           >
             <CustomRowItem class="text-gray-800 font-medium flex items-center gap-2">
-              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F009%2F398%2F577%2Foriginal%2Fman-avatar-clipart-illustration-free-png.png&f=1&nofb=1&ipt=50f7600e92cf78afe9a1e326d205b428cc3a65f3d3e558cdbc9e324a63d39944&ipo=images"
+              <img src="@/assets/profile.png"
                    alt="avatar"
                    class="w-8 h-8 rounded-full"
               />

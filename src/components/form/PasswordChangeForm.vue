@@ -41,6 +41,8 @@ const handleSubmit = async () => {
         type="password"
         v-model="currentPassword"
         required
+        min="8"
+        max="64"
         :placeholder="$t('modals.passwordChange.form.currentPasswordPlaceholder')"
       />
       <FormInput
@@ -48,6 +50,8 @@ const handleSubmit = async () => {
         type="password"
         v-model="newPassword"
         required
+        min="8"
+        max="64"
         :placeholder="$t('modals.passwordChange.form.newPasswordPlaceholder')"
       />
       <FormInput
@@ -55,6 +59,8 @@ const handleSubmit = async () => {
         type="password"
         v-model="confirmNewPassword"
         required
+        min="8"
+        max="64"
         :placeholder="$t('modals.passwordChange.form.confirmPasswordPlaceholder')"
       />
       <transition name="error-transition">

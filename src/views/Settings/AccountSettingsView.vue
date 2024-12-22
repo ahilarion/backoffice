@@ -10,12 +10,12 @@ import { useI18n } from 'vue-i18n';
 import Modal from "@/components/modals/Modal.vue";
 import PasswordChangeForm from "@/components/form/PasswordChangeForm.vue";
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const authStore = useAuthStore();
 const usersStore = useUsersStore();
 const options = [
-  { value: 'en', label: 'English' },
-  { value: 'fr', label: 'French' },
+  { value: 'en', label: t('languages.english') },
+  { value: 'fr', label: t('languages.french') },
 ];
 
 const user = computed(() => authStore.user);
@@ -56,8 +56,8 @@ const handleSave = () => {
         </div>
       </div>
       <FormInput :label="$t('pages.settings.myAccount.form.email')" type="email" v-model="email" required placeholder="Enter your email" />
-      <ActionButton label="Change password" @click="handlePasswordChange" white id="change-password" />
-      <FormDropdown label="Language" :options="options" v-model="user_locale" />
+      <ActionButton :label="$t('pages.settings.myAccount.form.changePassword')" @click="handlePasswordChange" white id="change-password" />
+      <FormDropdown :label="$t('pages.settings.myAccount.form.language')" :options="options" v-model="user_locale" />
       <FormSubmitButton :loading="authStore.loading" :label="$t('pages.settings.myAccount.form.submit')" />
     </form>
   </div>

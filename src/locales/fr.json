@@ -1,4 +1,8 @@
 {
+  "languages": {
+    "english": "Anglais",
+    "french": "Français"
+  },
   "common": {
     "roles": {
       "admin": "Administrateur"
@@ -15,7 +19,7 @@
         "start": "Affichage de",
         "to": "à",
         "of": "sur",
-        "entries": "éléments"
+        "entries": "entrées"
       }
     }
   },
@@ -30,9 +34,27 @@
     "logout": "Déconnexion"
   },
   "errors": {
-    "404": "Hmmm... Il semble que cette page n'existe pas. Essayez de chercher autre chose.",
+    "404": "Hmm... Il semble que cette page n'existe pas. Essayez de chercher autre chose.",
     "auth": {
       "invalidCredentials": "Email ou mot de passe invalide"
+    },
+    "users": {
+      "passwordDoesNotMatch": "Les mots de passe ne correspondent pas",
+      "currentPasswordIncorrect": "Le mot de passe actuel est incorrect"
+    }
+  },
+  "modals": {
+    "passwordChange": {
+      "title": "Changer le mot de passe",
+      "form": {
+        "currentPassword": "Mot de passe actuel",
+        "currentPasswordPlaceholder": "Entrez votre mot de passe actuel",
+        "newPassword": "Nouveau mot de passe",
+        "newPasswordPlaceholder": "Entrez votre nouveau mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "confirmPasswordPlaceholder": "Confirmez votre nouveau mot de passe",
+        "submit": "Changer le mot de passe"
+      }
     }
   },
   "pages": {
@@ -43,12 +65,26 @@
         "form": {
           "email": "Adresse email",
           "password": "Mot de passe",
-          "submit": "Connexion"
+          "submit": "Se connecter"
         }
       }
     },
     "dashboard": {
       "title": "Tableau de bord"
+    },
+    "settings": {
+      "title": "Paramètres du compte",
+      "myAccount": {
+        "title": "Mon compte",
+        "form": {
+          "firstName": "Prénom",
+          "lastName": "Nom",
+          "email": "Adresse email",
+          "changePassword": "Changer le mot de passe",
+          "language": "Langue",
+          "submit": "Enregistrer les modifications"
+        }
+      }
     },
     "users": {
       "title": "Utilisateurs",
