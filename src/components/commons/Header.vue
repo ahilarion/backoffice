@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 import { Bars3Icon } from "@heroicons/vue/24/outline";
 import { useAuthStore } from "@/stores/auth";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import { useRouter } from "vue-router";
-import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   isNavigationOpen: boolean
@@ -14,12 +13,11 @@ const emit = defineEmits<{
   (e: 'toggleNavigation'): void
 }>();
 
-const { locale } = useI18n()
 const isDropdownOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
-const authStore = useAuthStore()
 const router = useRouter()
-const currentLanguage = ref(locale.value)
+const authStore = useAuthStore()
+const user = computed(() => authStore.user)
 
 const toggleNavigation = () => {
   emit('toggleNavigation');
@@ -39,14 +37,6 @@ const logout = () => {
   authStore.logout().then(() => {
     router.push('/login')
   })
-}
-
-const handleLanguageChange = () => {
-  const newLanguage = currentLanguage.value === 'fr' ? 'en' : 'fr'
-  locale.value = newLanguage
-  currentLanguage.value = newLanguage
-
-  localStorage.setItem('language', newLanguage)
 }
 
 onMounted(() => {
@@ -69,13 +59,10 @@ onBeforeUnmount(() => {
 
     <div ref="dropdownRef" class="relative">
       <div class="flex items-center gap-4">
-        <button @click="handleLanguageChange">
-          <span class="text-sm font-semibold text-gray-600 cursor-pointer">{{ currentLanguage.toUpperCase() }}</span>
-        </button>
         <span class="w-[1px] h-8 bg-gray-200"></span>
         <button @click="toggleDropdown" class="flex items-center gap-2">
           <img src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />
-          <span class="text-sm font-medium text-gray-600">John Doe</span>
+          <span class="text-sm font-medium text-gray-600">{{ user?.first_name }} {{ user?.last_name }}</span>
           <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-3 w-3 text-gray-400 lg:mt-1" />
         </button>
       </div>
@@ -92,7 +79,7 @@ onBeforeUnmount(() => {
              class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div class="py-1" role="menu">
             <div class="px-4 py-2 text-sm flex flex-col gap-1">
-              <p class="font-medium">John Doe</p>
+              <p class="font-medium">{{ user?.first_name }} {{ user?.last_name }}</p>
               <p class="italic text-xs text-gray-500">{{ $t('common.roles.admin') }}</p>
             </div>
 

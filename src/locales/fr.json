@@ -21,7 +21,9 @@
   },
   "navigation": {
     "dashboard": "Tableau de bord",
-    "customers": "Clients"
+    "users": "Utilisateurs",
+    "roles": "Rôles",
+    "permissions": "Permissions"
   },
   "header": {
     "settings": "Paramètres",
@@ -48,10 +50,10 @@
     "dashboard": {
       "title": "Tableau de bord"
     },
-    "customers": {
-      "title": "Clients",
+    "users": {
+      "title": "Utilisateurs",
       "list": {
-        "title": "Tous les clients",
+        "title": "Tous les utilisateurs",
         "columns": {
           "name": "Nom",
           "email": "Email",

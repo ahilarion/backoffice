@@ -20,7 +20,7 @@ const props = defineProps<{
           <slot name="header"></slot>
         </thead>
         <tbody>
-          <tr v-if="props.loading" class="h-96">
+          <tr v-if="props.loading" class="transition-all h-[calc(11*57px)]">
             <td class="text-center align-middle w-full" :colspan="5">
               <Loading class="w-6 h-6 text-gray-500 mx-auto" />
             </td>

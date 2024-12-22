@@ -36,7 +36,11 @@ const closeNavigation = () => {
       <Logo class="ml-2"/>
       <NavigationCategory title="Pages">
         <NavigationItem to="/" :icon="['fas' ,'chart-line']" :label="$t('navigation.dashboard')" />
-        <NavigationItem to="/customers" :icon="['far' ,'user']" :label="$t('navigation.customers')" />
+      </NavigationCategory>
+      <NavigationCategory title="Admin">
+        <NavigationItem to="/users" :icon="['fas' ,'user']" :label="$t('navigation.users')" />
+        <NavigationItem to="/roles" :icon="['fas' ,'person']" :label="$t('navigation.roles')" />
+        <NavigationItem to="/permissions" :icon="['fas' ,'pen-nib']" :label="$t('navigation.permissions')" />
       </NavigationCategory>
     </nav>
   </div>

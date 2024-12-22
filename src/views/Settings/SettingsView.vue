@@ -10,7 +10,7 @@ import NavigationItem from "@/components/navigation/NavigationItem.vue";
     </div>
     <div class="relative flex flex-col lg:flex-row bg-base-100 rounded-lg shadow-sm">
       <div class="w-full lg:w-60 lg:min-h-full border-b lg:border-b-0 lg:border-r flex flex-col gap-4 p-4">
-        <NavigationItem to="/settings" label="My Account" :icon="['far' ,'user']" />
+        <NavigationItem to="/settings" label="My Account" :icon="['fas' ,'user']" />
       </div>
       <div class="flex-1">
         <router-view />

@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import FormInput from "@/components/form/FormInput.vue";
 import FormSubmitButton from "@/components/form/FormSubmitButton.vue";
 import Logo from "@/components/icons/Logo.vue";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "vue-router";
+import { useI18n } from 'vue-i18n'
 
+const { locale } = useI18n()
 const router = useRouter();
 const authStore = useAuthStore();
 const email = ref('');
 const password = ref('');
-const loading = ref(false);
+const user = computed(() => authStore.user);
 
 const login = (email: string, password: string) => {
-  loading.value = true;
-  setTimeout(() => {
-    authStore.login(email, password).then(() => {
-      loading.value = false;
+  authStore.login(email, password).then((data) => {
+    if (data) {
       router.push('/');
-    }).catch(() => {
-      loading.value = false;
-    });
-  }, 2000);
+    }
+
+    locale.value = user.value?.locale || 'fr'
+    localStorage.setItem('language', user.value?.locale || 'fr')
+  });
 }
 </script>
 
@@ -38,7 +39,7 @@ const login = (email: string, password: string) => {
           <FormInput :label="$t('pages.auth.login.form.email')" type="email" v-model="email" required />
           <FormInput :label="$t('pages.auth.login.form.password')" type="password" v-model="password" required />
           <transition name="error-transition">
-            <div v-if="loading" class="bg-error p-2 rounded-md bg-opacity-10 overflow-hidden">
+            <div v-if="authStore.$state.error" class="bg-error p-2 rounded-md bg-opacity-10 overflow-hidden">
               <p>
                 <XMarkIcon class="h-5 w-5 inline-block text-error" />
                 <span class="text-sm text-error">{{ $t('errors.auth.invalidCredentials') }}</span>
@@ -49,7 +50,7 @@ const login = (email: string, password: string) => {
             <p class="text-sm text-gray-600 cursor-pointer hover:underline">
               {{ $t('pages.auth.login.forgotPassword') }}
             </p>
-            <FormSubmitButton :loading="loading" :label="$t('pages.auth.login.form.submit')" />
+            <FormSubmitButton :loading="authStore.$state.loading" :label="$t('pages.auth.login.form.submit')" />
           </div>
         </form>
       </div>

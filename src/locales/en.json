@@ -21,7 +21,9 @@
   },
   "navigation": {
     "dashboard": "Dashboard",
-    "customers": "Customers"
+    "users": "Users",
+    "roles": "Roles",
+    "permissions": "Permissions"
   },
   "header": {
     "settings": "Settings",
@@ -31,6 +33,24 @@
     "404": "Hmm... It seems this page doesn't exist. Try searching for something else.",
     "auth": {
       "invalidCredentials": "Invalid email or password"
+    },
+    "users": {
+      "passwordDoesNotMatch": "Password does not match",
+      "currentPasswordIncorrect": "Current password is incorrect"
+    }
+  },
+  "modals": {
+    "passwordChange": {
+      "title": "Change Password",
+      "form": {
+        "currentPassword": "Current password",
+        "currentPasswordPlaceholder": "Enter your current password",
+        "newPassword": "New password",
+        "newPasswordPlaceholder": "Enter your new password",
+        "confirmPassword": "Confirm password",
+        "confirmPasswordPlaceholder": "Confirm your new password",
+        "submit": "Change password"
+      }
     }
   },
   "pages": {
@@ -60,10 +80,10 @@
         }
       }
     },
-    "customers": {
-      "title": "Customers",
+    "users": {
+      "title": "Users",
       "list": {
-        "title": "All customers",
+        "title": "All users",
         "columns": {
           "name": "Name",
           "email": "Email",
