@@ -49,6 +49,7 @@ onMounted(async () => {
     <div class="flex flex-wrap items-center justify-between gap-4">
       <h1 class="text-3xl font-semibold">{{ $t('pages.articles.create.title') }}</h1>
       <div class="flex flex-wrap gap-4">
+        <ActionButton @action="router.push('/articles')" white :label="$t('common.actions.back')" />
         <ActionButton @action="openArticleDeletionModal" :label="$t('common.actions.delete')" red/>
         <ActionButton @action="openArticleEditionModal" :label="$t('common.actions.save')" />
       </div>
