@@ -14,7 +14,7 @@ const props = defineProps<{
 const articlesStore = useArticlesStore();
 
 const router = useRouter();
-const articleName = ref("");
+const articleTitle = ref("");
 const articleShortDescription = ref("");
 const articleThumbnail = ref("");
 const publishArticle = ref(false);
@@ -31,7 +31,7 @@ const handleSubmit = async () => {
   }
 
   await articlesStore.createArticle({
-    title: articleName.value.trim(),
+    title: articleTitle.value.trim(),
     short_description: articleShortDescription.value.trim(),
     thumbnail: articleThumbnail.value.trim(),
     content: props.articleContent,
@@ -52,7 +52,7 @@ const checkIfValidImage = computed(() => {
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
       <FormInput
         :label="$t('modals.articleCreate.form.title')"
-        v-model="articleName"
+        v-model="articleTitle"
         required
         max="64"
         :placeholder="$t('modals.articleCreate.form.titlePlaceholder')"

@@ -3,7 +3,6 @@ import {ref, computed, onMounted} from "vue";
 import Editor from "@tinymce/tinymce-vue";
 import ActionButton from "@/components/commons/ActionButton.vue";
 import Modal from "@/components/modals/Modal.vue";
-import ArticleCreationForm from "@/components/form/ArticleCreationForm.vue";
 import { useArticlesStore } from "@/stores/articles";
 import { useRouter } from "vue-router";
 import ArticleDeletionForm from "@/components/form/ArticleDeletionForm.vue";
