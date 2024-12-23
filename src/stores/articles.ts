@@ -74,6 +74,32 @@ export const useArticlesStore = defineStore('articles', {
             } finally {
                 this.loading = false
             }
+        },
+
+        async updateArticle(id: string, articleData: Partial<Article>) {
+            try {
+                this.loading = true
+                const response = await articlesModule.updateArticle(id, articleData)
+                this.articles = this.articles.map((article) => article.id === id ? response.data.data : article)
+            } catch (error: any) {
+                this.error = error.response?.data?.message || 'Une erreur est survenue'
+                throw error
+            } finally {
+                this.loading = false
+            }
+        },
+
+        async deleteArticle(id: string) {
+            try {
+                this.loading = true
+                await articlesModule.deleteArticle(id)
+                this.articles = this.articles.filter((article) => article.id !== id)
+            } catch (error: any) {
+                this.error = error.response?.data?.message || 'Une erreur est survenue'
+                throw error
+            } finally {
+                this.loading = false
+            }
         }
     }
 })

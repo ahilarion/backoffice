@@ -11,7 +11,10 @@
       "back": "Retour",
       "search": "Rechercher",
       "add": "Ajouter",
-      "create": "Créer"
+      "create": "Créer",
+      "delete": "Supprimer",
+      "save": "Enregistrer",
+      "cancel": "Annuler"
     },
     "pagination": {
       "previous": "Précédent",
@@ -48,7 +51,8 @@
       "roleAlreadyExists": "Ce rôle existe déjà"
     },
     "articles": {
-      "articleIsEmpty": "L'article est vide"
+      "articleIsEmpty": "L'article est vide",
+      "articleCannotBeDeleted": "L'article ne peut pas être supprimé"
     }
   },
   "modals": {
@@ -89,6 +93,23 @@
         "publish": "Publier l'article ?",
         "submit": "Créer l'article"
       }
+    },
+    "articleEdit": {
+      "title": "Modifier l'article",
+      "form": {
+        "title": "Titre",
+        "titlePlaceholder": "Entrez le titre de l'article",
+        "shortDescription": "Description courte",
+        "shortDescriptionPlaceholder": "Entrez la description courte de l'article",
+        "thumbnail": "Miniature",
+        "thumbnailPlaceholder": "Entrez l'URL de la miniature",
+        "publish": "Publier l'article ?",
+        "submit": "Enregistrer les modifications"
+      }
+    },
+    "articleDelete": {
+      "title": "Voulez-vous vraiment supprimer cet article ?",
+      "submit": "Supprimer l'article"
     }
   },
   "pages": {

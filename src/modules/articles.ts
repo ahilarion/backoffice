@@ -40,5 +40,13 @@ export const articlesModule = {
 
     createArticle(articleData: Partial<Article>) {
         return api.post<{success: boolean, data: Article}>('/articles', articleData)
+    },
+
+    updateArticle(id: string, articleData: Partial<Article>) {
+        return api.put<{success: boolean, data: Article}>(`/articles/${id}`, articleData)
+    },
+
+    deleteArticle(id: string) {
+        return api.delete(`/articles/${id}`)
     }
 }
