@@ -12,9 +12,9 @@ import fr from './locales/fr.json'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChevronDown, faChartLine, faMagnifyingGlass, faPerson, faPenNib, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChartLine, faMagnifyingGlass, faPerson, faPenNib, faUser, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faChevronDown, faChartLine, faUser, faMagnifyingGlass, faPerson, faPenNib)
+library.add(faChevronDown, faChartLine, faUser, faMagnifyingGlass, faPerson, faPenNib, faNewspaper)
 
 const savedLanguage = localStorage.getItem('language')
 const defaultLocale = savedLanguage && ['fr', 'en'].includes(savedLanguage) ? savedLanguage : 'en'

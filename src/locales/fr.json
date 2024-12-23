@@ -10,7 +10,8 @@
     "actions": {
       "back": "Retour",
       "search": "Rechercher",
-      "add": "Ajouter"
+      "add": "Ajouter",
+      "create": "Créer"
     },
     "pagination": {
       "previous": "Précédent",
@@ -25,6 +26,7 @@
   },
   "navigation": {
     "dashboard": "Tableau de bord",
+    "articles": "Articles",
     "users": "Utilisateurs",
     "roles": "Rôles",
     "permissions": "Permissions"
@@ -44,6 +46,9 @@
     },
     "roles": {
       "roleAlreadyExists": "Ce rôle existe déjà"
+    },
+    "articles": {
+      "articleIsEmpty": "L'article est vide"
     }
   },
   "modals": {
@@ -71,6 +76,19 @@
     },
     "roleEdit": {
       "title": "Modifier le rôle"
+    },
+    "articleCreate": {
+      "title": "Créer un article",
+      "form": {
+        "title": "Titre",
+        "titlePlaceholder": "Entrez le titre de l'article",
+        "shortDescription": "Description courte",
+        "shortDescriptionPlaceholder": "Entrez la description courte de l'article",
+        "thumbnail": "Miniature",
+        "thumbnailPlaceholder": "Entrez l'URL de la miniature",
+        "publish": "Publier l'article ?",
+        "submit": "Créer l'article"
+      }
     }
   },
   "pages": {
@@ -87,6 +105,20 @@
     },
     "dashboard": {
       "title": "Tableau de bord"
+    },
+    "articles": {
+      "title": "Articles",
+      "list": {
+        "title": "Tous les articles",
+        "columns": {
+          "title": "Titre",
+          "slug": "Slug",
+          "creationDate": "Date de création"
+        }
+      },
+      "create": {
+        "title": "Créer un article"
+      }
     },
     "settings": {
       "title": "Paramètres du compte",
