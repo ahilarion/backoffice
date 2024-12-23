@@ -19,7 +19,6 @@ const articleShortDescription = ref("");
 const articleThumbnail = ref("");
 const publishArticle = ref(false);
 
-
 const errorEmptyArticle = ref(false);
 
 const emit = defineEmits(["close"]);

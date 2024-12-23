@@ -49,7 +49,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="top-0 z-10 h-16 sticky w-full flex items-center justify-between lg:justify-end px-4 lg:px-8 bg-transparent">
+  <div class="top-0 z-30 h-16 sticky w-full flex items-center justify-between lg:justify-end px-4 lg:px-8 bg-transparent">
     <div class="h-full w-full top-0 left-0 absolute bg-base-100 lg:bg-base-200 bg-opacity-60 lg:bg-opacity-80 backdrop-blur-sm -z-10"></div>
     <span class="h-[1px] w-full lg:w-[calc(100%-4rem)] absolute bg-gray-200 bottom-0 left-1/2 transform -translate-x-1/2"></span>
 

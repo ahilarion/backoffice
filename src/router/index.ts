@@ -47,6 +47,11 @@ const router = createRouter({
           component: () => import('@/views/Articles/ArticleEditView.vue')
         },
         {
+          path: 'slides',
+          name: 'Slides',
+          component: () => import('@/views/SlidesView.vue')
+        },
+        {
           path: 'settings',
           name: 'Settings',
           component: () => import('@/views/Settings/SettingsView.vue'),

@@ -37,6 +37,8 @@ const closeNavigation = () => {
       <NavigationCategory title="Pages">
         <NavigationItem to="/" :icon="['fas' ,'chart-line']" :label="$t('navigation.dashboard')" />
         <NavigationItem to="/articles" :icon="['fas' ,'newspaper']" :label="$t('navigation.articles')" />
+        <NavigationItem to="/slides" :icon="['fas' ,'images']" :label="$t('navigation.slides')" />
+        <NavigationItem to="/products" :icon="['fas' ,'cart-shopping']" :label="$t('navigation.products')" />
       </NavigationCategory>
       <NavigationCategory title="Admin">
         <NavigationItem to="/users" :icon="['fas' ,'user']" :label="$t('navigation.users')" />

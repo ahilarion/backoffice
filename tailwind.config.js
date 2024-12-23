@@ -8,6 +8,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        canveat: ['Caveat', 'cursive'],
       },
       colors: {
         "primary": "#2563eb",

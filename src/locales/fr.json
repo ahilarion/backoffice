@@ -30,6 +30,8 @@
   "navigation": {
     "dashboard": "Tableau de bord",
     "articles": "Articles",
+    "slides": "Carrousel",
+    "products": "Produits",
     "users": "Utilisateurs",
     "roles": "Rôles",
     "permissions": "Permissions"
@@ -53,6 +55,10 @@
     "articles": {
       "articleIsEmpty": "L'article est vide",
       "articleCannotBeDeleted": "L'article ne peut pas être supprimé"
+    },
+    "slides": {
+      "slideCannotBeCreated": "La slide ne peut pas être créée",
+      "slideOrderIsNaN": "L'ordre de la slide doit être un nombre"
     }
   },
   "modals": {
@@ -110,6 +116,38 @@
     "articleDelete": {
       "title": "Voulez-vous vraiment supprimer cet article ?",
       "submit": "Supprimer l'article"
+    },
+    "slideCreate": {
+      "title": "Créer une slide",
+      "form": {
+        "title": "Titre",
+        "titlePlaceholder": "Entrez le titre de la slide",
+        "text": "Texte",
+        "textPlaceholder": "Entrez le texte de la slide",
+        "image": "Image",
+        "imagePlaceholder": "Entrez l'URL de l'image",
+        "redirectUrl": "URL de redirection",
+        "redirectUrlPlaceholder": "Entrez l'URL de redirection",
+        "order": "Ordre",
+        "orderPlaceholder": "Entrez l'ordre de la slide",
+        "submit": "Créer la slide"
+      }
+    },
+    "slideEdit": {
+      "title": "Modifier la slide",
+      "form": {
+        "title": "Titre",
+        "titlePlaceholder": "Entrez le titre de la slide",
+        "text": "Texte",
+        "textPlaceholder": "Entrez le texte de la slide",
+        "image": "Image",
+        "imagePlaceholder": "Entrez l'URL de l'image",
+        "redirectUrl": "URL de redirection",
+        "redirectUrlPlaceholder": "Entrez l'URL de redirection",
+        "order": "Ordre",
+        "orderPlaceholder": "Entrez l'ordre de la slide",
+        "submit": "Enregistrer les modifications"
+      }
     }
   },
   "pages": {
@@ -170,6 +208,9 @@
     },
     "roles": {
       "title": "Rôles"
+    },
+    "slides": {
+      "title": "Carrousel"
     }
   }
 }
