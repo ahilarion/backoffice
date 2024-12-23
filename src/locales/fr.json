@@ -41,6 +41,9 @@
     "users": {
       "passwordDoesNotMatch": "Les mots de passe ne correspondent pas",
       "currentPasswordIncorrect": "Le mot de passe actuel est incorrect"
+    },
+    "roles": {
+      "roleAlreadyExists": "Ce rôle existe déjà"
     }
   },
   "modals": {
@@ -55,6 +58,19 @@
         "confirmPasswordPlaceholder": "Confirmez votre nouveau mot de passe",
         "submit": "Changer le mot de passe"
       }
+    },
+    "roleCreate": {
+      "title": "Créer un rôle",
+      "form": {
+        "name": "Nom",
+        "namePlaceholder": "Entrez le nom du rôle",
+        "description": "Description",
+        "descriptionPlaceholder": "Entrez la description du rôle",
+        "submit": "Enregistrer le rôle"
+      }
+    },
+    "roleEdit": {
+      "title": "Modifier le rôle"
     }
   },
   "pages": {
@@ -98,6 +114,9 @@
           "totalSpent": "Total dépensé"
         }
       }
+    },
+    "roles": {
+      "title": "Rôles"
     }
   }
 }

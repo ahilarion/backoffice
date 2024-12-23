@@ -28,6 +28,7 @@ const value = computed({
       {{ props.label }}
     </label>
     <input
+        v-if="props.type !== 'textarea'"
         :type="props.type"
         :id="id"
         :name="id"
@@ -37,6 +38,16 @@ const value = computed({
         :minLength="props.minLength"
         :placeholder="props.placeholder"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400 sm:text-sm">
+    <textarea
+        v-else
+        :id="id"
+        :name="id"
+        v-model="value"
+        :required="props.required"
+        :maxLength="props.maxLength ?? 255"
+        :minLength="props.minLength"
+        :placeholder="props.placeholder"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400 sm:text-sm"></textarea>
   </div>
 </template>
 
