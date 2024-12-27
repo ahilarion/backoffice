@@ -28,7 +28,7 @@ const closeNavigation = () => {
 
     <nav
         :class="[
-        'fixed z-30 rounded-r-2xl h-screen w-64 bg-base-100 shadow-sm p-4 flex flex-col gap-8 transition-transform',
+        'fixed z-40 rounded-r-2xl h-screen w-64 bg-base-100 shadow-sm p-4 flex flex-col gap-8 transition-transform',
         isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0',
         'lg:relative lg:translate-x-0'
       ]"
@@ -39,6 +39,7 @@ const closeNavigation = () => {
         <NavigationItem to="/articles" :icon="['fas' ,'newspaper']" :label="$t('navigation.articles')" />
         <NavigationItem to="/slides" :icon="['fas' ,'images']" :label="$t('navigation.slides')" />
         <NavigationItem to="/products" :icon="['fas' ,'cart-shopping']" :label="$t('navigation.products')" />
+        <NavigationItem to="/faq" :icon="['fas' ,'question']" :label="$t('navigation.faq')" />
       </NavigationCategory>
       <NavigationCategory title="Admin">
         <NavigationItem to="/users" :icon="['fas' ,'user']" :label="$t('navigation.users')" />

@@ -85,16 +85,6 @@ const checkIfValidImage = computed(() => {
           v-model="publishArticle"
       />
 
-      <!-- Error message -->
-      <transition name="error-transition">
-        <div v-if="articlesStore.$state.error" class="bg-error p-2 rounded-md bg-opacity-10 overflow-hidden">
-          <p>
-            <XMarkIcon class="h-5 w-5 inline-block text-error" />
-            <span class="text-sm text-error">{{ $t('errors.roles.roleAlreadyExists') }}</span>
-          </p>
-        </div>
-      </transition>
-
       <transition name="error-transition">
         <div v-if="errorEmptyArticle" class="bg-error p-2 rounded-md bg-opacity-10 overflow-hidden">
           <p>

@@ -32,6 +32,7 @@
     "articles": "Articles",
     "slides": "Carrousel",
     "products": "Produits",
+    "faq": "FAQ",
     "users": "Utilisateurs",
     "roles": "Rôles",
     "permissions": "Permissions"
@@ -200,9 +201,7 @@
         "columns": {
           "name": "Nom",
           "email": "Email",
-          "orders": "Commandes",
-          "lastOrder": "Dernière commande",
-          "totalSpent": "Total dépensé"
+          "roles": "Rôles"
         }
       }
     },

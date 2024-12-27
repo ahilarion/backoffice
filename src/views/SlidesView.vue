@@ -61,7 +61,10 @@ onMounted(async () => {
     <SlideCreationForm @close="closeSlideCreationModal" />
   </Modal>
   <Modal v-bind:visible="isSlideEditionModalOpen" v-on:close="closeSlideEditionModal" :title="$t('modals.slideEdit.title')">
-    <SlideEditionForm @close="closeSlideEditionModal" :slide="slidesStore.slide" />
+    <SlideEditionForm
+        v-if="slidesStore.slide"
+        @close="closeSlideEditionModal"
+        :slide="slidesStore.slide" />
   </Modal>
 </template>
 

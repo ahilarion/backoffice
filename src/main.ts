@@ -12,17 +12,17 @@ import fr from './locales/fr.json'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChevronDown, faChartLine, faMagnifyingGlass, faPerson, faPenNib, faUser, faNewspaper, faCartShopping, faImages } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChartLine, faMagnifyingGlass, faPerson, faPenNib, faUser, faNewspaper, faCartShopping, faImages, faQuestion } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faChevronDown, faChartLine, faUser, faMagnifyingGlass, faPerson, faPenNib, faNewspaper, faCartShopping, faImages)
+library.add(faChevronDown, faChartLine, faUser, faMagnifyingGlass, faPerson, faPenNib, faNewspaper, faCartShopping, faImages, faQuestion)
 
 const savedLanguage = localStorage.getItem('language')
-const defaultLocale = savedLanguage && ['fr', 'en'].includes(savedLanguage) ? savedLanguage : 'en'
+const defaultLocale = savedLanguage && ['fr', 'en'].includes(savedLanguage) ? savedLanguage : 'fr'
 
 const i18n = createI18n({
     legacy: false,
     locale: defaultLocale,
-    fallbackLocale: 'en',
+    fallbackLocale: 'fr',
     messages: {
         en,
         fr

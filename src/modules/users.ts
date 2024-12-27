@@ -7,6 +7,7 @@ export interface User {
     last_name: string
     email: string
     locale: string
+    roles?: string[]
     created_at: string
     updated_at: string
 }

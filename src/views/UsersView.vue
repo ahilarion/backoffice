@@ -43,6 +43,16 @@ const handleRowClick = (e: MouseEvent, uuid: string) => {
   }
 }
 
+// Function to determine styling based on role
+const getRoleClass = (roles: string[]) => {
+  if (roles.includes("admin")) {
+    return "bg-red-100 text-red-800";
+  } else if (roles.includes("user")) {
+    return "bg-green-100 text-green-800";
+  }
+  return "bg-gray-100 text-gray-800"; // Default class for other roles
+}
+
 onMounted(async () => {
   await usersStore.fetchUsers(1);
 })
@@ -70,11 +80,15 @@ watch(search, (value) => {
       <CustomTable :title="$t('pages.users.list.title')" :count="total" :loading="usersStore.loading">
         <template #header>
           <CustomHeader>
-            <CustomHeaderItem class="w-3/12 min-w-[200px]">{{ $t('pages.users.list.columns.name') }}</CustomHeaderItem>
-            <CustomHeaderItem class="w-4/12 min-w-[200px]">{{ $t('pages.users.list.columns.email') }}</CustomHeaderItem>
-            <CustomHeaderItem class="w-1/12">{{ $t('pages.users.list.columns.orders') }}</CustomHeaderItem>
-            <CustomHeaderItem class="w-2/12">{{ $t('pages.users.list.columns.lastOrder') }}</CustomHeaderItem>
-            <CustomHeaderItem class="w-2/12">{{ $t('pages.users.list.columns.totalSpent') }}</CustomHeaderItem>
+            <CustomHeaderItem class="w-3/12 min-w-[200px]">
+              {{ $t('pages.users.list.columns.name') }}
+            </CustomHeaderItem>
+            <CustomHeaderItem class="w-4/12 min-w-[200px]">
+              {{ $t('pages.users.list.columns.email') }}
+            </CustomHeaderItem>
+            <CustomHeaderItem class="w-1/12">
+              {{ $t('pages.users.list.columns.roles') }}
+            </CustomHeaderItem>
           </CustomHeader>
         </template>
 
@@ -87,22 +101,29 @@ watch(search, (value) => {
               @click="handleRowClick($event, user.id)"
           >
             <CustomRowItem class="text-gray-800 font-medium flex items-center gap-2">
-              <img src="@/assets/profile.png"
-                   alt="avatar"
-                   class="w-8 h-8 rounded-full"
+              <img
+                  src="@/assets/profile.png"
+                  alt="avatar"
+                  class="w-8 h-8 rounded-full"
               />
               {{ user.first_name }} {{ user.last_name }}
             </CustomRowItem>
             <CustomRowItem>
-              <a :href="`mailto:${user.email}`" class="text-blue-500 hover:underline">{{ user.email }}</a>
+              <a
+                  :href="`mailto:${user.email}`"
+                  class="text-blue-500 hover:underline"
+              >
+                {{ user.email }}
+              </a>
             </CustomRowItem>
-            <CustomRowItem>10</CustomRowItem>
             <CustomRowItem>
-              <router-link :to="`/orders/${user.id}`" class="text-blue-500 hover:underline">
-                #1554
-              </router-link>
+              <span
+                  :class="getRoleClass(user.roles as string[])"
+                  class="px-2 py-1 rounded-full"
+              >
+                {{ user.roles?.join(', ') }}
+              </span>
             </CustomRowItem>
-            <CustomRowItem class="text-green-500 font-medium">${{ Math.floor(Math.random() * 999) }}</CustomRowItem>
           </CustomRow>
         </template>
       </CustomTable>
