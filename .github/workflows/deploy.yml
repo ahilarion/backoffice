@@ -28,11 +28,18 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
           echo "VITE_UTM_SOURCE=${{ secrets.VITE_UTM_SOURCE }}" >> .env
           echo "VITE_WEBSITE_URL=${{ secrets.VITE_WEBSITE_URL }}" >> .env
 
+      - name: Verify environment variables
+        run: cat .env
+
       - name: Build the project
+        env: # Inject explicit environment variables during build
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+          VITE_UTM_SOURCE: ${{ secrets.VITE_UTM_SOURCE }}
+          VITE_WEBSITE_URL: ${{ secrets.VITE_WEBSITE_URL }}
         run: npm run build
 
       - name: Deploy to Hostinger
