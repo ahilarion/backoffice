@@ -31,8 +31,6 @@ jobs:
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
           echo "VITE_UTM_SOURCE=${{ secrets.VITE_UTM_SOURCE }}" >> .env
           echo "VITE_WEBSITE_URL=${{ secrets.VITE_WEBSITE_URL }}" >> .env
-          # Vérification du contenu du fichier .env
-          cat .env
 
       - name: Build the project
         run: npm run build
