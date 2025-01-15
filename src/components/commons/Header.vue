@@ -18,7 +18,7 @@ const dropdownRef = ref<HTMLElement | null>(null)
 const router = useRouter()
 const authStore = useAuthStore()
 const user = computed(() => authStore.user)
-
+const websiteURL = import.meta.env.VITE_WEBSITE_URL
 const toggleNavigation = () => {
   emit('toggleNavigation');
 };
@@ -59,6 +59,13 @@ onBeforeUnmount(() => {
 
     <div ref="dropdownRef" class="relative">
       <div class="flex items-center gap-4">
+        <a :href="`${websiteURL}`"
+           class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-all duration-300 ease-in-out"
+           target="_blank"
+        >
+          <font-awesome-icon :icon="['fas', 'arrow-up-right-from-square']" />
+          {{ $t('header.visitSite') }}
+        </a>
         <span class="w-[1px] h-8 bg-gray-200"></span>
         <button @click="toggleDropdown" class="flex items-center gap-2">
           <img src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />

@@ -39,6 +39,7 @@
   },
   "header": {
     "settings": "Settings",
+    "visitSite": "Visit Site",
     "logout": "Logout"
   },
   "errors": {
