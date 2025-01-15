@@ -28,7 +28,7 @@ jobs:
 
       - name: Create .env file with secrets
         run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
+          echo "VITE_API_URL=${{ secrets.FTP_SERVER }}" > .env
           echo "VITE_UTM_SOURCE=${{ secrets.VITE_UTM_SOURCE }}" >> .env
           echo "VITE_WEBSITE_URL=${{ secrets.VITE_WEBSITE_URL }}" >> .env
           # Vérification du contenu du fichier .env
