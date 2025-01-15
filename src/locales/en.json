@@ -164,7 +164,11 @@
       }
     },
     "dashboard": {
-      "title": "Dashboard"
+      "title": "Dashboard",
+      "status": {
+        "stopped": "Stopped",
+        "running": "Running"
+      }
     },
     "articles": {
       "title": "Articles",

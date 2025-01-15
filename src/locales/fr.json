@@ -164,7 +164,11 @@
       }
     },
     "dashboard": {
-      "title": "Tableau de bord"
+      "title": "Tableau de bord",
+      "status": {
+        "stopped": "Arrêté",
+        "running": "Actif"
+      }
     },
     "articles": {
       "title": "Articles",
