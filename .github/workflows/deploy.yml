@@ -42,6 +42,9 @@ jobs:
           VITE_WEBSITE_URL: ${{ secrets.VITE_WEBSITE_URL }}
         run: npm run build
 
+      - name: Copy .htaccess to dist folder
+        run: cp .htaccess ./dist/.htaccess
+
       - name: Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
