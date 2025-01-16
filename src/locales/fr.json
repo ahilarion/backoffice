@@ -216,7 +216,14 @@
       }
     },
     "roles": {
-      "title": "Rôles"
+      "title": "Rôles",
+      "list": {
+        "title": "Tous les rôles",
+        "columns": {
+          "id": "ID",
+          "name": "Nom",
+          "createdAt": "Créé le"
+        }
     },
     "role": {
       "title": "Modifier le rôle"
