@@ -218,6 +218,7 @@
           "id": "ID",
           "name": "Name",
           "createdAt": "Created At"
+        }
       }
     },
     "role": {
