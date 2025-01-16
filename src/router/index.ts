@@ -37,6 +37,11 @@ const router = createRouter({
           component: () => import('@/views/Roles/RoleView.vue')
         },
         {
+          path: 'permissions',
+          name: 'Permissions',
+          component: () => import('@/views/Permissions/PermissionsView.vue')
+        },
+        {
           path: 'articles',
           name: 'Articles',
           component: () => import('@/views/Articles/ArticlesView.vue')
