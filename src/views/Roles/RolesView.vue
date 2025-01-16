@@ -12,16 +12,13 @@ import CustomPagination from "@/components/table/CustomPagination.vue";
 import { useRouter } from "vue-router";
 import RoleCreationForm from "@/components/form/RoleCreationForm.vue";
 import Modal from "@/components/modals/Modal.vue";
-import RoleEditForm from "@/components/form/RoleEditForm.vue";
 
 const router = useRouter();
 const rolesStore = useRolesStore();
 const search = ref<string>('');
 const roles = computed(() => rolesStore.roles);
 const isRoleModalOpen = ref(false);
-const isRoleEditModalOpen = ref(false);
 
-// Pagination computed properties
 const currentPage = computed(() => rolesStore.pagination.currentPage);
 const total = computed(() => rolesStore.pagination.total);
 const perPage = computed(() => rolesStore.pagination.perPage);
@@ -41,7 +38,7 @@ const handleNext = async () => {
 const handleRowClick = (e: MouseEvent, uuid: string) => {
   if ((e.target as HTMLElement).tagName !== 'A') {
     rolesStore.fetchRole(uuid).then(() => {
-      openRoleEditModal();
+      router.push(`/roles/${uuid}`);
     });
   }
 }
@@ -50,16 +47,8 @@ const closeRoleModal = () => {
   isRoleModalOpen.value = false;
 }
 
-const closeRoleEditModal = () => {
-  isRoleEditModalOpen.value = false;
-}
-
 const openRoleModal = () => {
   isRoleModalOpen.value = true;
-}
-
-const openRoleEditModal = () => {
-  isRoleEditModalOpen.value = true;
 }
 
 onMounted(async () => {
@@ -121,10 +110,6 @@ watch(search, (value) => {
   </div>
   <Modal v-bind:visible="isRoleModalOpen" v-on:close="closeRoleModal" :title="$t('modals.roleCreate.title')">
     <RoleCreationForm @close="closeRoleModal" />
-  </Modal>
-  <Modal v-bind:visible="isRoleEditModalOpen" v-on:close="closeRoleEditModal" :title="$t('modals.roleEdit.title')">
-    <p>Working on it...</p>
-    <!--<RoleEditForm @close="closeRoleEditModal" />-->
   </Modal>
 </template>
 

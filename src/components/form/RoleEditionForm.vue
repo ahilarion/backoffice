@@ -1,62 +1,54 @@
 <script setup lang="ts">
-import {ref, defineEmits, computed} from "vue";
-import FormInput from "@/components/form/FormInput.vue";
+import {defineEmits, computed, ref} from "vue";
 import FormSubmitButton from "@/components/form/FormSubmitButton.vue";
-import { useRolesStore } from "@/stores/roles";
+import { useRolesStore} from "@/stores/roles";
+import { useRouter } from "vue-router";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
+import ActionButton from "@/components/commons/ActionButton.vue";
 
 const rolesStore = useRolesStore();
 
-const roleName = ref("");
-const role = computed(() => rolesStore.role);
-const formError = ref<string | null>(null);
+const router = useRouter();
+const roleId = ref(router.currentRoute.value.params.id as string);
+const props = defineProps<{
+  roleName: string;
+  selectedPermissions: string[];
+}>();
 
 const emit = defineEmits(["close"]);
 
 const handleSubmit = async () => {
-  formError.value = null;
-
-  if (!roleName.value.trim()) {
-    formError.value = "Role name is required.";
-    return;
-  }
-
-  await rolesStore.createRole({
-    name: roleName.value.trim().toLowerCase(),
+  await rolesStore.updateRole(roleId.value, {
+    name: props.roleName,
+    permissions: props.selectedPermissions,
   }).then(() => {
     emit("close");
   })
 };
+
 </script>
 
 <template>
   <div>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
-      <p class="text-lg font-semibold">{{ role?.name }}</p>
-      <FormInput
-          :label="$t('modals.roleCreate.form.name')"
-          v-model="roleName"
-          required
-          max="64"
-          :placeholder="$t('modals.roleCreate.form.namePlaceholder')"
-          type="text"
-      />
-
-      <!-- Error message -->
       <transition name="error-transition">
         <div v-if="rolesStore.$state.error" class="bg-error p-2 rounded-md bg-opacity-10 overflow-hidden">
           <p>
             <XMarkIcon class="h-5 w-5 inline-block text-error" />
-            <span class="text-sm text-error">{{ $t('errors.roles.roleAlreadyExists') }}</span>
+            <span class="text-sm text-error">{{ $t('errors.articles.articleCannotBeDeleted') }}</span>
           </p>
         </div>
       </transition>
 
-      <!-- Submit button -->
-      <FormSubmitButton
-          :label="$t('modals.roleCreate.form.submit')"
-          :loading="rolesStore.loading"
-      />
+      <div class="flex justify-start gap-4">
+        <ActionButton :label="$t('common.actions.cancel')" white @click="emit('close')" />
+
+        <FormSubmitButton
+            :label="$t('modals.roleEdit.submit')"
+            :loading="rolesStore.loading"
+        />
+      </div>
+
     </form>
   </div>
 </template>
