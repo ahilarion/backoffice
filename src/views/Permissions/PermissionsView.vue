@@ -10,7 +10,7 @@ import CustomHeaderItem from "@/components/table/CustomHeaderItem.vue";
 import CustomHeader from "@/components/table/CustomHeader.vue";
 import CustomPagination from "@/components/table/CustomPagination.vue";
 import { useRouter } from "vue-router";
-import RoleCreationForm from "@/components/form/RoleCreationForm.vue";
+import PermissionCreationForm from "@/components/form/PermissionCreationForm.vue";
 import Modal from "@/components/modals/Modal.vue";
 
 const router = useRouter();
@@ -38,7 +38,7 @@ const handleNext = async () => {
 const handleRowClick = (e: MouseEvent, uuid: string) => {
   if ((e.target as HTMLElement).tagName !== 'A') {
     permissionsStore.fetchPermission(uuid).then(() => {
-      router.push(`/permissions/${uuid}`);
+
     });
   }
 }
@@ -108,7 +108,7 @@ watch(search, (value) => {
     />
   </div>
   <Modal v-bind:visible="isPermissionModalOpen" v-on:close="closePermissionModal" :title="$t('modals.permissionCreate.title')">
-    <RoleCreationForm @close="closePermissionModal" />
+    <PermissionCreationForm @close="closePermissionModal" />
   </Modal>
 </template>
 
