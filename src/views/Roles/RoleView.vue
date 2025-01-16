@@ -117,7 +117,7 @@ onMounted(async () => {
                       v-model="selectedPermissions"
                   />
                   <label :for="`${category}.${perm}`" class="ml-2 text-sm">
-                    {{ perm }}
+                    {{ category }}.{{ perm }}
                   </label>
                 </div>
               </div>
