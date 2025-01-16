@@ -19,17 +19,22 @@ const router = createRouter({
         {
           path: 'users',
           name: 'Users',
-          component: () => import('@/views/UsersView.vue')
+          component: () => import('@/views/Users/UsersView.vue')
         },
         {
           path: '/users/:id',
           name: 'User',
-          component: () => import('@/views/UserView.vue')
+          component: () => import('@/views/Users/UserView.vue')
         },
         {
           path: 'roles',
           name: 'Roles',
-          component: () => import('@/views/RolesView.vue')
+          component: () => import('@/views/Roles/RolesView.vue')
+        },
+        {
+          path: 'roles/:id',
+          name: 'Role',
+          component: () => import('@/views/Roles/RoleView.vue')
         },
         {
           path: 'articles',
