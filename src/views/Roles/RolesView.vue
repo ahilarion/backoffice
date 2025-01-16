@@ -75,8 +75,7 @@ watch(search, (value) => {
         </div>
       </div>
 
-      <CustomTable :title="$t('pages.users.list.title')" :count="total" :loading="rolesStore.loading && isRoleEditModalOpen">
-        <template #header>
+      <CustomTable :title="$t('pages.users.list.title')" :count="total" :loading="rolesStore.loading && isRoleModalOpen">        <template #header>
           <CustomHeader>
             <CustomHeaderItem class="w-3/12 min-w-[200px]">ID</CustomHeaderItem>
             <CustomHeaderItem class="w-3/12 min-w-[200px]">Name</CustomHeaderItem>
