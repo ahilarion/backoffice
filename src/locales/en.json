@@ -81,8 +81,8 @@
       "form": {
         "name": "Name",
         "namePlaceholder": "Enter role name",
-        "description": "Description",
-        "descriptionPlaceholder": "Enter role description",
+        "addPermission": "Add Permission",
+        "currentPermissions": "Current Permissions",
         "submit": "Save Role"
       }
     },
@@ -212,6 +212,9 @@
     },
     "roles": {
       "title": "Roles"
+    },
+    "role": {
+      "title": "Modify Role"
     },
     "slides": {
       "title": "Carousel"

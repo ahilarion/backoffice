@@ -81,13 +81,18 @@
       "form": {
         "name": "Nom",
         "namePlaceholder": "Entrez le nom du rôle",
-        "description": "Description",
-        "descriptionPlaceholder": "Entrez la description du rôle",
+        "addPermission": "Ajouter une permission",
+        "currentPermissions": "Permissions actuelles",
         "submit": "Enregistrer le rôle"
       }
     },
     "roleEdit": {
-      "title": "Modifier le rôle"
+      "title": "Voulez-vous modifier ce rôle ?",
+      "submit": "Modifier le rôle"
+    },
+    "roleDelete": {
+      "title": "Voulez-vous vraiment supprimer ce rôle ?",
+      "submit": "Supprimer le rôle"
     },
     "articleCreate": {
       "title": "Créer un article",
@@ -212,6 +217,9 @@
     },
     "roles": {
       "title": "Rôles"
+    },
+    "role": {
+      "title": "Modifier le rôle"
     },
     "slides": {
       "title": "Carrousel"
