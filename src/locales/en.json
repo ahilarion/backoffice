@@ -216,6 +216,17 @@
     "role": {
       "title": "Modify Role"
     },
+    "permissions": {
+      "title": "Permissions",
+      "list": {
+        "title": "All Permissions",
+        "columns": {
+          "id": "ID",
+          "name": "Name",
+          "createdAt": "Created At"
+        }
+      }
+    },
     "slides": {
       "title": "Carousel"
     }
