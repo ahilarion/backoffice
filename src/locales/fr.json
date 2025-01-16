@@ -86,6 +86,14 @@
         "submit": "Enregistrer le rôle"
       }
     },
+    "permissionCreate": {
+      "title": "Create Permission",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Enter permission name",
+        "submit": "Create Permission"
+      }
+    },
     "roleEdit": {
       "title": "Voulez-vous modifier ce rôle ?",
       "submit": "Modifier le rôle"
@@ -107,6 +115,7 @@
         "submit": "Créer l'article"
       }
     },
+
     "articleEdit": {
       "title": "Modifier l'article",
       "form": {

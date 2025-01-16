@@ -86,6 +86,14 @@
         "submit": "Save Role"
       }
     },
+    "permissionCreate": {
+      "title": "Create Permission",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Enter permission name",
+        "submit": "Create Permission"
+      }
+    },
     "roleEdit": {
       "title": "Edit Role"
     },
