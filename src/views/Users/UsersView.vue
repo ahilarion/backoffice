@@ -96,7 +96,7 @@ watch(search, (value) => {
           <CustomRow
               v-for="user in users"
               :key="user.id"
-              class="cursor-pointer hover:bg-gray-50 transition-all"
+              class="cursor-pointer transition-all"
               :is-last="user === users[users.length - 1]"
               @click="handleRowClick($event, user.id)"
           >

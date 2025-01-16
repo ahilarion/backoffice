@@ -87,7 +87,7 @@ watch(search, (value) => {
           <CustomRow
               v-for="role in roles"
               :key="role.id"
-              class="cursor-pointer hover:bg-gray-50 transition-all"
+              class="cursor-pointer transition-all"
               :is-last="role === roles[roles.length - 1]"
               @click="handleRowClick($event, role.id)"
           >
