@@ -4,6 +4,7 @@ import api from '@/plugins/api'
 export interface Role {
     id: string
     name: string
+    permissions: string[]
     created_at: string
     updated_at: string
 }
@@ -35,5 +36,13 @@ export const rolesModule = {
 
     createRole(roleData: Partial<Role>) {
         return api.post<{success: boolean, data: Role}>('/roles', roleData)
+    },
+
+    updateRole(id: string, roleData: Partial<Role>) {
+        return api.put<{success: boolean, data: Role}>(`/roles/${id}`, roleData)
+    },
+
+    deleteRole(id: string) {
+        return api.delete<{success: boolean, message: string}>(`/roles/${id}`)
     }
 }
