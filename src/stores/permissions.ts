@@ -80,7 +80,7 @@ export const usePermissionsStore = defineStore('permissions', {
             try {
                 this.loading = true
                 const response = await permissionsModule.createPermission(permissionData)
-                this.permissions.push(response.data.data)
+                await this.fetchPermissions(this.pagination.currentPage)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error
