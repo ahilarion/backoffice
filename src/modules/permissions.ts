@@ -29,8 +29,8 @@ export const permissionsModule = {
         return api.get<PermissionsResponse>('/permissions/all')
     },
 
-    getPermissions(page: number = 1) {
-        return api.get<PermissionsResponse>(`/permissions?page=${page}`)
+    getPermissions(page: number = 1, search: string = '') {
+        return api.get<PermissionsResponse>(`/permissions?page=${page}&search=${search}`)
     },
 
     getPermission(id: string) {

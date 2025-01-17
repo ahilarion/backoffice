@@ -4,6 +4,7 @@ import { permissionsModule, type Permission } from '@/modules/permissions'
 interface PermissionsState {
     permissions: Permission[]
     permission: Permission | null
+    search: string
     loading: boolean
     error: string | null
     pagination: {
@@ -18,6 +19,7 @@ export const usePermissionsStore = defineStore('permissions', {
     state: (): PermissionsState => ({
         permissions: [],
         permission: null,
+        search: '',
         loading: false,
         error: null,
         pagination: {
@@ -29,10 +31,11 @@ export const usePermissionsStore = defineStore('permissions', {
     }),
 
     actions: {
-        async fetchPermissions(page: number = 1) {
+        async fetchPermissions(page: number = 1, search: string = '') {
             try {
+                this.search = search
                 this.loading = true
-                const response = await permissionsModule.getPermissions(page)
+                const response = await permissionsModule.getPermissions(page, search)
                 this.permissions = response.data.data
 
                 const { pagination } = response.data.meta

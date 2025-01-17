@@ -56,11 +56,7 @@ onMounted(async () => {
 })
 
 watch(search, (value) => {
-  if (value) {
-    console.log(value);
-  } else {
-    permissionsStore.fetchPermissions(1);
-  }
+  permissionsStore.fetchPermissions(1, value);
 })
 </script>
 
