@@ -1,23 +1,20 @@
 import { defineStore } from 'pinia'
 import { authModule } from '@/modules/auth'
-import { usersModule } from "@/modules/users";
+import { usersModule, type User } from '@/modules/users'
 
-interface User {
-    id: string
-    first_name: string
-    last_name: string
-    email: string
-    locale?: string
-    created_at: string
-    updated_at: string
+interface UsersState {
+    user: User | null
+    loading: boolean
+    error: string | null
+    isAuthenticated: boolean
 }
 
 export const useAuthStore = defineStore('auth', {
-    state: () => ({
-        isAuthenticated: false,
-        user: null as User | null,
+    state: (): UsersState => ({
+        user: null,
         loading: false,
-        error: null as string | null
+        error: null,
+        isAuthenticated: false
     }),
 
     actions: {
@@ -29,7 +26,6 @@ export const useAuthStore = defineStore('auth', {
                 const response = await authModule.login({ email, password })
                 const { token, user } = response.data.data
 
-                localStorage.setItem('auth_token', token)
                 this.isAuthenticated = true
                 this.user = user
 

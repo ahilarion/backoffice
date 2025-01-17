@@ -5,6 +5,7 @@ export interface User {
     id: string
     first_name: string
     last_name: string
+    profile_picture: string
     email: string
     locale: string
     roles?: string[]
@@ -41,7 +42,7 @@ export const usersModule = {
         return api.post<{success: boolean, data: User}>('/users', userData)
     },
 
-    updateUser(id: string, userData: Partial<User>) {
+    updateUser(id: string, userData: Partial<User> ) {
         return api.put<{success: boolean, data: User}>(`/users/${id}`, userData)
     },
 
