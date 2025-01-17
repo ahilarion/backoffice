@@ -14,7 +14,8 @@
       "create": "Créer",
       "delete": "Supprimer",
       "save": "Enregistrer",
-      "cancel": "Annuler"
+      "cancel": "Annuler",
+      "crop": "Rogner l'image"
     },
     "pagination": {
       "previous": "Précédent",
