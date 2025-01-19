@@ -48,6 +48,15 @@ const handleSave = () => {
 
 const handleCrop = (croppedImage: string) => {
   profileImage.value = croppedImage;
+
+  const byteString = atob(croppedImage.split(',')[1]);
+  const mimeString = croppedImage.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  selectedImageFile.value = new File([ab], 'cropped.png', { type: mimeString });
 };
 
 const handleFileChange = (event: Event) => {
