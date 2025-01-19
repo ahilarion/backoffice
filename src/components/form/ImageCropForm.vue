@@ -25,8 +25,8 @@ const loadImage = (file: File) => {
       dragMode: 'move',
       center: true,
       background: false,
-      zoomable: false,
-      scalable: false,
+      zoomable: true, // Permet de zoomer si nécessaire
+      scalable: true, // Permet de redimensionner l'image
     });
   };
   reader.readAsDataURL(file);
@@ -59,10 +59,27 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 items-center">
-    <div class="bg-white p-4 rounded-lg flex-col flex items-start gap-4">
-      <img id="image-to-crop" class="max-w-full" />
-      <ActionButton :label="$t('common.actions.crop')" @click="handleCrop" />
+  <div class="flex flex-col gap-4 items-start rounded-lg max-w-xl mx-auto">
+    <div class="size-[400px] relative rounded-lg overflow-hidden">
+      <img
+          id="image-to-crop"
+          class="absolute inset-0 object-contain w-full h-full"
+          alt="Image to crop"
+      />
     </div>
+    <ActionButton
+        :label="$t('common.actions.crop')"
+        @click="handleCrop"
+    />
   </div>
 </template>
+
+<style scoped>
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+</style>
