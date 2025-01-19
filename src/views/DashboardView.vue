@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-8 p-6 min-h-screen">
+  <div class="flex flex-col gap-8 min-h-screen">
     <header class="flex items-center justify-between">
       <h1 class="text-3xl font-bold text-gray-800">{{ $t('pages.dashboard.title') }}</h1>
     </header>
