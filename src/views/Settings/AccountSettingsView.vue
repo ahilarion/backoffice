@@ -43,13 +43,10 @@ const handleSave = () => {
       })
       .then(() => {
         locale.value = user_locale.value;
-        authStore.me();
       });
 
   if (selectedImageFile.value) {
-    usersStore.updateProfilePicture(user.value?.id ?? '', selectedImageFile.value).then(() => {
-      authStore.me();
-    });
+    usersStore.updateProfilePicture(user.value?.id ?? '', selectedImageFile.value);
   }
 };
 
