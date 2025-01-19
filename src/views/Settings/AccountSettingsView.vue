@@ -40,7 +40,7 @@ const handleSave = () => {
         last_name: lastName.value,
         email: email.value,
         locale: user_locale.value,
-      }, selectedImageFile.value).then(() => {
+      }, selectedImageFile.value as File).then(() => {
         locale.value = user_locale.value;
         authStore.me();
       });
