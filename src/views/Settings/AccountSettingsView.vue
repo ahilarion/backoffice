@@ -40,14 +40,10 @@ const handleSave = () => {
         last_name: lastName.value,
         email: email.value,
         locale: user_locale.value,
-      })
-      .then(() => {
+      }, selectedImageFile.value).then(() => {
         locale.value = user_locale.value;
+        authStore.me();
       });
-
-  if (selectedImageFile.value) {
-    usersStore.updateProfilePicture(user.value?.id ?? '', selectedImageFile.value);
-  }
 };
 
 const handleCrop = (croppedImage: string) => {

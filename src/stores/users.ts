@@ -77,28 +77,20 @@ export const useUsersStore = defineStore('users', {
             }
         },
 
-        async updateUser(id: string, userData: Partial<User>) {
+        async updateUser(id: string, userData: Partial<User>, profilePicture?: File) {
             try {
                 this.loading = true
+
+                if (profilePicture) {
+                    await usersModule.updateProfilePicture(id, profilePicture)
+                }
+
                 const response = await usersModule.updateUser(id, userData)
+
                 const index = this.users.findIndex(user => user.id === id)
                 if (index !== -1) {
                     this.users[index] = response.data.data
                 }
-                return response.data.data
-            } catch (error: any) {
-                this.error = error.response?.data?.message
-                throw error
-            } finally {
-                this.loading = false
-            }
-        },
-
-        async updateProfilePicture(id: string, profilePicture: File) {
-            try {
-                this.loading = true
-                const response = await usersModule.updateProfilePicture(id, profilePicture)
-                this.user = response.data.data
                 return response.data.data
             } catch (error: any) {
                 this.error = error.response?.data?.message
