@@ -102,6 +102,13 @@ watch(search, (value) => {
           >
             <CustomRowItem class="text-gray-800 font-medium flex items-center gap-2">
               <img
+                  v-if="user.profile_picture"
+                  :src="user.profile_picture"
+                  alt="avatar"
+                  class="w-8 h-8 rounded-full"
+              />
+              <img
+                  v-else
                   src="../../assets/profile.png"
                   alt="avatar"
                   class="w-8 h-8 rounded-full"
