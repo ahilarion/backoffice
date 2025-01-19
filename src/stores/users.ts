@@ -94,6 +94,20 @@ export const useUsersStore = defineStore('users', {
             }
         },
 
+        async updateProfilePicture(id: string, profilePicture: File) {
+            try {
+                this.loading = true
+                const response = await usersModule.updateProfilePicture(id, profilePicture)
+                this.user = response.data.data
+                return response.data.data
+            } catch (error: any) {
+                this.error = error.response?.data?.message
+                throw error
+            } finally {
+                this.loading = false
+            }
+        },
+
         async changePassword(id: string, currentPassword: string, password: string, passwordConfirmation: string) {
             try {
                 this.loading = true

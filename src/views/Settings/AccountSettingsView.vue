@@ -20,13 +20,13 @@ const options = [
 ];
 
 const user = computed(() => authStore.user);
-const firstName = ref(user?.value?.first_name || '');
-const lastName = ref(user?.value?.last_name || '');
-const email = ref(user?.value?.email || '');
-const user_locale = ref(user?.value?.locale || 'fr');
+const firstName = ref(user.value?.first_name || '');
+const lastName = ref(user.value?.last_name || '');
+const email = ref(user.value?.email || '');
+const user_locale = ref(user.value?.locale || 'fr');
 const isPasswordModalVisible = ref(false);
 const isImageCropModalVisible = ref(false);
-const profileImage = ref(user?.value?.profile_picture);
+const profileImage = ref(user.value?.profile_picture || '');
 const selectedImageFile = ref<File | null>(null);
 
 const handlePasswordChange = () => {
@@ -34,22 +34,23 @@ const handlePasswordChange = () => {
 };
 
 const handleSave = () => {
-  const formData = new FormData();
-  formData.append('first_name', firstName.value);
-  formData.append('last_name', lastName.value);
-  formData.append('email', email.value);
-  formData.append('locale', user_locale.value);
-
-  if (selectedImageFile.value) {
-    formData.append('profile_picture', selectedImageFile.value);
-  }
-
   usersStore
-      .updateUser(user?.value?.id ?? '', formData)
+      .updateUser(user.value?.id ?? '', {
+        first_name: firstName.value,
+        last_name: lastName.value,
+        email: email.value,
+        locale: user_locale.value,
+      })
       .then(() => {
         locale.value = user_locale.value;
-        useAuthStore().me();
+        authStore.me();
       });
+
+  if (selectedImageFile.value) {
+    usersStore.updateProfilePicture(user.value?.id ?? '', selectedImageFile.value).then(() => {
+      authStore.me();
+    });
+  }
 };
 
 const handleCrop = (croppedImage: string) => {
@@ -57,12 +58,15 @@ const handleCrop = (croppedImage: string) => {
 };
 
 const handleFileChange = (event: Event) => {
-  const file = (event.target as HTMLInputElement).files?.[0];
-  if (file && file.size <= 2 * 1024 * 1024) {
-    selectedImageFile.value = file;
-    isImageCropModalVisible.value = true;
-  } else {
-    alert('File size exceeds 2MB');
+  const target = event.target as HTMLInputElement;
+  if (target && target.files) {
+    const file = target.files[0];
+    if (file && file.size <= 2 * 1024 * 1024) {
+      selectedImageFile.value = file;
+      isImageCropModalVisible.value = true;
+    } else {
+      alert('File size exceeds 2MB');
+    }
   }
 };
 

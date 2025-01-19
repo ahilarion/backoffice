@@ -26,6 +26,7 @@ export const useAuthStore = defineStore('auth', {
                 const response = await authModule.login({ email, password })
                 const { token, user } = response.data.data
 
+                localStorage.setItem('auth_token', token)
                 this.isAuthenticated = true
                 this.user = user
 

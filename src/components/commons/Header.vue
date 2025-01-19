@@ -68,7 +68,8 @@ onBeforeUnmount(() => {
         </a>
         <span class="w-[1px] h-8 bg-gray-200"></span>
         <button @click="toggleDropdown" class="flex items-center gap-2">
-          <img src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />
+          <img v-if="user?.profile_picture" :src="user?.profile_picture" alt="profile" class="h-10 w-10 rounded-full" />
+          <img v-else src="@/assets/profile.png" alt="profile" class="h-10 w-10 rounded-full" />
           <span class="text-sm font-medium text-gray-600">{{ user?.first_name }} {{ user?.last_name }}</span>
           <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-3 w-3 text-gray-400 lg:mt-1" />
         </button>

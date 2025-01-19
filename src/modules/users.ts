@@ -46,6 +46,17 @@ export const usersModule = {
         return api.put<{success: boolean, data: User}>(`/users/${id}`, userData)
     },
 
+    updateProfilePicture(id: string, profilePicture: File) {
+        const formData = new FormData();
+        formData.append('profile_picture', profilePicture);
+
+        return api.post(`/users/${id}/upload-profile-picture`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+    },
+
     changePassword(id: string, currentPassword: string, password: string, passwordConfirmation: string) {
         return api.put<{success: boolean}>(`/users/${id}/change-password`, {
             current_password: currentPassword,
