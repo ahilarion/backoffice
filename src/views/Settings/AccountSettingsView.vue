@@ -83,7 +83,7 @@ const handleFileChange = (event: Event) => {
           <div class="relative">
             <img v-if="profileImage" :src="profileImage" alt="profile" class="rounded-full w-28 h-28 shadow-md" />
             <img v-else src="@/assets/profile.png" alt="profile" class="rounded-full w-28 h-28 shadow-md" />
-            <label for="file-upload" class="top-0 left-0 absolute h-full w-full flex items-center justify-center cursor-pointer bg-black bg-opacity-20 rounded-full opacity-0 hover:opacity-100 transition-all">
+            <label for="file-upload" class="top-0 left-0 absolute h-full w-full flex items-center justify-center cursor-pointer bg-black bg-opacity-30 rounded-full opacity-0 hover:opacity-100 transition-all text-white">
               <font-awesome-icon :icon="['fas', 'pencil']" />
             </label>
             <input id="file-upload" type="file" @change="handleFileChange" accept="image/*" class="hidden" />
