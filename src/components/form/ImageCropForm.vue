@@ -60,7 +60,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col gap-4 items-start rounded-lg max-w-xl mx-auto">
-    <div class="size-[400px] relative rounded-lg overflow-hidden">
+    <div class="relative rounded-lg overflow-hidden w-full sm:w-[400px] h-[300px] sm:h-[400px]">
       <img
           id="image-to-crop"
           class="absolute inset-0 object-contain w-full h-full"
