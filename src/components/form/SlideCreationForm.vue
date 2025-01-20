@@ -25,6 +25,7 @@ const handleSubmit = async () => {
     redirect_url: slideRedirectURL.value.trim(),
     order: slideOrder.value
   }).then(() => {
+    slidesStore.fetchSlides();
     emit("close");
     router.push('/slides');
   })

@@ -46,8 +46,7 @@ export const useSlidesStore = defineStore('slides', {
         async createSlide(slideData: Partial<Slide>) {
             try {
                 this.loading = true
-                const response = await slidesModule.createSlide(slideData)
-                this.slides.push(response.data.data)
+                await slidesModule.createSlide(slideData)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error
@@ -59,9 +58,7 @@ export const useSlidesStore = defineStore('slides', {
         async updateSlide(id: string, slideData: Partial<Slide>) {
             try {
                 this.loading = true
-                const response = await slidesModule.updateSlide(id, slideData)
-                const index = this.slides.findIndex(slide => slide.id === id)
-                this.slides[index] = response.data.data
+                await slidesModule.updateSlide(id, slideData)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error
@@ -74,7 +71,6 @@ export const useSlidesStore = defineStore('slides', {
             try {
                 this.loading = true
                 await slidesModule.deleteSlide(id)
-                this.slides = this.slides.filter(slide => slide.id !== id)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error
