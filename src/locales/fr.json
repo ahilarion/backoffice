@@ -15,6 +15,7 @@
       "delete": "Supprimer",
       "save": "Enregistrer",
       "cancel": "Annuler",
+      "upload": "Téléverser",
       "crop": "Rogner l'image"
     },
     "pagination": {
@@ -45,6 +46,7 @@
     "logout": "Déconnexion"
   },
   "errors": {
+    "unexpected": "Une erreur inattendue s'est produite",
     "404": "Hmm... Il semble que cette page n'existe pas. Essayez de chercher autre chose.",
     "auth": {
       "invalidCredentials": "Email ou mot de passe invalide"
@@ -66,6 +68,11 @@
     }
   },
   "modals": {
+    "uploadFile": {
+      "title": "Téléverser un fichier",
+      "description": "Glissez et déposez un fichier ou cliquez pour le téléverser",
+      "submit": "Téléverser"
+    },
     "passwordChange": {
       "title": "Changer le mot de passe",
       "form": {
@@ -117,7 +124,6 @@
         "submit": "Créer l'article"
       }
     },
-
     "articleEdit": {
       "title": "Modifier l'article",
       "form": {

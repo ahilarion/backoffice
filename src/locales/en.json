@@ -45,6 +45,7 @@
     "logout": "Logout"
   },
   "errors": {
+    "unexpected": "An unexpected error occurred",
     "404": "Hmm... It seems this page doesn't exist. Try searching for something else.",
     "auth": {
       "invalidCredentials": "Invalid email or password"
@@ -66,6 +67,11 @@
     }
   },
   "modals": {
+    "uploadFile": {
+      "title": "Upload File",
+      "description": "Drag and drop a file or click to upload",
+      "submit": "Upload"
+    },
     "passwordChange": {
       "title": "Change Password",
       "form": {
