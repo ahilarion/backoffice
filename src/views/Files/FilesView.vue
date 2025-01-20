@@ -158,6 +158,7 @@ watch(search, (value) => {
               <p class="text-white text-center px-2">{{ file.name }}</p>
               <div class="absolute top-2 right-2 flex items-center gap-2">
                 <button
+                    v-if="!file.is_protected"
                     class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors"
                     @click.prevent="handleDelete(file.id)"
                 >

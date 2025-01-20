@@ -8,6 +8,7 @@ export interface File {
     is_public: boolean
     extension: string
     size: number
+    is_protected: boolean
     created_at: string
     updated_at: string
 }
