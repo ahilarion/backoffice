@@ -82,7 +82,7 @@ watch(search, (value) => {
           <CustomRow
               v-for="article in articles"
               :key="article.id"
-              class="cursor-pointer hover:bg-gray-50 transition-all"
+              class="cursor-pointer transition-all"
               :is-last="article === articles[articles.length - 1]"
               @click="handleRowClick($event, article.id)"
           >
