@@ -32,7 +32,7 @@ const handleSubmit = async () => {
 };
 
 const checkIfValidImage = computed(() => {
-  return slideRedirectURL.value.match(/\.(jpeg|jpg|gif|png)$/) != null;
+  return slideImageURL.value.match(/\.(jpeg|jpg|gif|png)$/) != null;
 });
 </script>
 
