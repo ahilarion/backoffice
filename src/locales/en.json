@@ -30,6 +30,7 @@
   },
   "navigation": {
     "dashboard": "Dashboard",
+    "files": "Files",
     "articles": "Articles",
     "slides": "Carousel",
     "products": "Products",
@@ -179,6 +180,9 @@
         "stopped": "Stopped",
         "running": "Running"
       }
+    },
+    "files": {
+      "title": "Files"
     },
     "articles": {
       "title": "Articles",

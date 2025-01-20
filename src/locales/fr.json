@@ -30,6 +30,7 @@
   },
   "navigation": {
     "dashboard": "Tableau de bord",
+    "files": "Fichiers",
     "articles": "Articles",
     "slides": "Carrousel",
     "products": "Produits",
@@ -185,6 +186,9 @@
         "stopped": "Arrêté",
         "running": "Actif"
       }
+    },
+    "files": {
+      "title": "Fichiers"
     },
     "articles": {
       "title": "Articles",

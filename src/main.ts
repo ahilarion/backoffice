@@ -12,9 +12,60 @@ import fr from './locales/fr.json'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChevronDown, faChartLine, faMagnifyingGlass, faPerson, faPenNib, faUser, faNewspaper, faCartShopping, faImages, faQuestion, faArrowUpRightFromSquare, faPencil } from "@fortawesome/free-solid-svg-icons";
+import {
+    faChevronDown,
+    faChartLine,
+    faMagnifyingGlass,
+    faPerson,
+    faPenNib,
+    faUser,
+    faNewspaper,
+    faCartShopping,
+    faImages,
+    faQuestion,
+    faArrowUpRightFromSquare,
+    faPencil,
+    faHardDrive,
+    faLink,
+    faCheck,
+    faFilePdf,
+    faFileWord,
+    faFilePowerpoint,
+    faFileAlt,
+    faFileExcel,
+    faFileArchive,
+    faFileCode,
+    faFileAudio,
+    faFileVideo,
+    faFile,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faChevronDown, faChartLine, faUser, faMagnifyingGlass, faPerson, faPenNib, faNewspaper, faCartShopping, faImages, faQuestion, faArrowUpRightFromSquare, faPencil)
+library.add(faChevronDown,
+    faChartLine,
+    faUser,
+    faMagnifyingGlass,
+    faPerson,
+    faPenNib,
+    faNewspaper,
+    faCartShopping,
+    faImages,
+    faQuestion,
+    faArrowUpRightFromSquare,
+    faPencil,
+    faHardDrive,
+    faLink,
+    faCheck,
+    faFilePdf,
+    faFileWord,
+    faFilePowerpoint,
+    faFileAlt,
+    faFileExcel,
+    faFileArchive,
+    faFileCode,
+    faFileAudio,
+    faFileVideo,
+    faFile,
+)
 
 const savedLanguage = localStorage.getItem('language')
 const defaultLocale = savedLanguage && ['fr', 'en'].includes(savedLanguage) ? savedLanguage : 'fr'
