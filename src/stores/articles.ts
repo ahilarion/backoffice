@@ -66,8 +66,7 @@ export const useArticlesStore = defineStore('articles', {
         async createArticle(roleData: Partial<Article>) {
             try {
                 this.loading = true
-                const response = await articlesModule.createArticle(roleData)
-                this.articles.push(response.data.data)
+                await articlesModule.createArticle(roleData)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error
@@ -79,8 +78,7 @@ export const useArticlesStore = defineStore('articles', {
         async updateArticle(id: string, articleData: Partial<Article>) {
             try {
                 this.loading = true
-                const response = await articlesModule.updateArticle(id, articleData)
-                this.articles = this.articles.map((article) => article.id === id ? response.data.data : article)
+                await articlesModule.updateArticle(id, articleData)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error
@@ -93,7 +91,6 @@ export const useArticlesStore = defineStore('articles', {
             try {
                 this.loading = true
                 await articlesModule.deleteArticle(id)
-                this.articles = this.articles.filter((article) => article.id !== id)
             } catch (error: any) {
                 this.error = error.response?.data?.message || 'Une erreur est survenue'
                 throw error

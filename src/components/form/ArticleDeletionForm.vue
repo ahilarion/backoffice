@@ -15,6 +15,7 @@ const emit = defineEmits(["close"]);
 
 const handleSubmit = async () => {
   await articlesStore.deleteArticle(articleId.value).then(() => {
+    articlesStore.fetchArticles(articlesStore.pagination.currentPage)
     emit("close");
     router.push('/articles');
   })

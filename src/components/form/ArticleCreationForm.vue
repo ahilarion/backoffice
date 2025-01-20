@@ -36,6 +36,7 @@ const handleSubmit = async () => {
     content: props.articleContent,
     is_published: publishArticle.value
   }).then(() => {
+    articlesStore.fetchArticles(articlesStore.pagination.currentPage)
     emit("close");
     router.push('/articles');
   })
