@@ -33,6 +33,7 @@ export const useFilesStore = defineStore('files', {
             try {
                 this.loading = true
                 const response = await filesModule.getFiles(page)
+
                 this.files = response.data.data
 
                 const { pagination } = response.data.meta
@@ -53,9 +54,7 @@ export const useFilesStore = defineStore('files', {
         async uploadFile(file : globalThis.File) {
             try {
                 this.loading = true
-                const response = await filesModule.uploadFile(file)
-                this.files.push(response.data.data)
-                return response.data.data
+                await filesModule.uploadFile(file)
             } catch (error: any) {
                 this.error = error.response?.data?.message
                 throw error
@@ -68,7 +67,6 @@ export const useFilesStore = defineStore('files', {
             try {
                 this.loading = true
                 await filesModule.deleteFile(id)
-                this.files = this.files.filter(file => file.id !== id)
             } catch (error: any) {
                 this.error = error.response?.data?.message
                 throw error

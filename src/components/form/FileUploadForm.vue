@@ -50,6 +50,7 @@ const handleFileChange = (event: Event) => {
 const handleUpload = async () => {
   if (selectedFile.value) {
     await filesStore.uploadFile(selectedFile.value).then(() => {
+      filesStore.fetchFiles(filesStore.pagination.currentPage);
       emit('close');
     });
   }

@@ -10,7 +10,7 @@ import Loading from "@/components/icons/Loading.vue";
 
 const filesStore = useFilesStore();
 
-const files = computed(() => filesStore.files);
+const files = computed(() => filesStore.files || []);
 
 const search = ref<string>('');
 const copiedFile = ref<string | null>(null);
@@ -84,7 +84,9 @@ const getFileIcon = (extension: string) => {
 };
 
 const handleDelete = async (fileId: string) => {
-  await filesStore.deleteFile(fileId);
+  await filesStore.deleteFile(fileId).then(() => {
+    filesStore.fetchFiles(currentPage.value);
+  });
 };
 
 const openFile = (e: MouseEvent, url: string) => {
@@ -126,7 +128,7 @@ watch(search, (value) => {
       <div class="flex flex-col rounded-lg bg-base-100 shadow-sm">
         <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-100">
           <h2 class="text-md font-medium">Tous les fichiers</h2>
-          <p class="text-md font-semibold text-gray-400">{{ total}}</p>
+          <p class="text-md font-semibold text-gray-400">{{ total }}</p>
         </div>
         <div v-if="filesStore.loading" class="flex items-center justify-center h-52">
           <Loading />
@@ -201,22 +203,3 @@ watch(search, (value) => {
     <FileUploadForm @close="closeFileUploadModal" />
   </Modal>
 </template>
-
-<style scoped>
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-@keyframes check-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-check {
-  animation: check-spin 0.5s ease-out;
-}
-</style>
