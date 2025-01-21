@@ -21,7 +21,7 @@ const closeNavigation = () => {
     <Transition name="fade">
       <div
           v-show="isOpen"
-          class="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden h-[120vh] w-full -top-20"
+          class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden h-[120vh] w-full"
           @click="closeNavigation"
       ></div>
     </Transition>
