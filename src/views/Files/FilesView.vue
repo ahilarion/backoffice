@@ -89,12 +89,24 @@ const handleDelete = async (fileId: string) => {
   });
 };
 
+const longPressTimeout = ref<number | null>(null);
+
 const openFile = (e: MouseEvent, url: string) => {
   const target = e.target as HTMLElement;
   if (target.tagName === 'BUTTON' || target.closest('button')) {
     return;
   }
-  window.open(url, '_blank');
+
+  longPressTimeout.value = window.setTimeout(() => {
+    window.open(url, '_blank');
+  }, 500); // 500ms for long press
+};
+
+const cancelLongPress = () => {
+  if (longPressTimeout.value) {
+    clearTimeout(longPressTimeout.value);
+    longPressTimeout.value = null;
+  }
 };
 
 const closeFileUploadModal = () => {
@@ -140,7 +152,9 @@ watch(search, (value) => {
           <div
               v-for="file in files"
               :key="file.id"
-              @click="openFile($event, file.url)"
+              @mousedown="openFile($event, file.url)"
+              @mouseup="cancelLongPress"
+              @mouseleave="cancelLongPress"
               class="relative flex items-center justify-center w-full h-52 border rounded-lg overflow-hidden group"
           >
             <img
