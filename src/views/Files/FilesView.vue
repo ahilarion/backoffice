@@ -90,10 +90,10 @@ const handleDelete = async (fileId: string) => {
   });
 };
 
-const openFile = (e: MouseEvent, url: string) => {
+const openFile = (e: MouseEvent, url: string, eyedButton: boolean = false) => {
   const target = e.target as HTMLElement;
   if (target.tagName === 'BUTTON' || target.closest('button')) {
-    if (isMobile()) {
+    if (isMobile() && eyedButton) {
       window.open(url, '_blank');
       return;
     }
@@ -206,7 +206,7 @@ watch(search, (value) => {
                 </button>
                 <button
                     class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors md:hidden"
-                    @click="openFile($event, file.url)"
+                    @click="openFile($event, file.url, true)"
                 >
                   <font-awesome-icon
                       :icon="['fas', 'eye']"
