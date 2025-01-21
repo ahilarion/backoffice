@@ -90,17 +90,31 @@ const handleDelete = async (fileId: string) => {
   });
 };
 
-const openFile = (e: MouseEvent, url: string, isMobile = false) => {
+const openFile = (e: MouseEvent, url: string) => {
   const target = e.target as HTMLElement;
   if (target.tagName === 'BUTTON' || target.closest('button')) {
-    if (isMobile) {
+    if (isMobile()) {
       window.open(url, '_blank');
       return;
     }
     return;
   }
 
-  window.open(url, '_blank');
+  if(!isMobile()) {
+    window.open(url, '_blank');
+  }
+};
+
+const isMobile = () => {
+  return window.innerWidth <= 1024;
+};
+
+const formatFileSize = (size: number) => {
+  if (size === 0) return '0 Bytes';
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const i = Math.floor(Math.log(size) / Math.log(k));
+  return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 };
 
 const closeFileUploadModal = () => {
@@ -142,7 +156,7 @@ watch(search, (value) => {
         <div v-else-if="total === 0" class="flex items-center justify-center h-52">
           <p class="text-gray-400">Aucun fichier trouvé</p>
         </div>
-        <div v-else class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 p-4">
+        <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-1 p-4">
           <div
               v-for="file in files"
               :key="file.id"
@@ -164,6 +178,7 @@ watch(search, (value) => {
             />
             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <p class="text-white text-center px-2">{{ file.name }}</p>
+              <p class="absolute bottom-2 left-2 text-white text-xs">{{ formatFileSize(file.size) }}</p>
               <div class="absolute top-2 right-2 flex items-center gap-2">
                 <button
                     v-if="!file.is_protected"
@@ -191,7 +206,7 @@ watch(search, (value) => {
                 </button>
                 <button
                     class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors md:hidden"
-                    @click="openFile($event, file.url, true)"
+                    @click="openFile($event, file.url)"
                 >
                   <font-awesome-icon
                       :icon="['fas', 'eye']"
