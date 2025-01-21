@@ -7,6 +7,7 @@ import Modal from "@/components/modals/Modal.vue";
 import { useFilesStore } from "@/stores/files";
 import FileUploadForm from "@/components/form/FileUploadForm.vue";
 import Loading from "@/components/icons/Loading.vue";
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 const filesStore = useFilesStore();
 
@@ -89,24 +90,17 @@ const handleDelete = async (fileId: string) => {
   });
 };
 
-const longPressTimeout = ref<number | null>(null);
-
-const openFile = (e: MouseEvent, url: string) => {
+const openFile = (e: MouseEvent, url: string, isMobile = false) => {
   const target = e.target as HTMLElement;
   if (target.tagName === 'BUTTON' || target.closest('button')) {
+    if (isMobile) {
+      window.open(url, '_blank');
+      return;
+    }
     return;
   }
 
-  longPressTimeout.value = window.setTimeout(() => {
-    window.open(url, '_blank');
-  }, 500); // 500ms for long press
-};
-
-const cancelLongPress = () => {
-  if (longPressTimeout.value) {
-    clearTimeout(longPressTimeout.value);
-    longPressTimeout.value = null;
-  }
+  window.open(url, '_blank');
 };
 
 const closeFileUploadModal = () => {
@@ -152,9 +146,7 @@ watch(search, (value) => {
           <div
               v-for="file in files"
               :key="file.id"
-              @mousedown="openFile($event, file.url)"
-              @mouseup="cancelLongPress"
-              @mouseleave="cancelLongPress"
+              @click="openFile($event, file.url)"
               class="relative flex items-center justify-center w-full h-52 border rounded-lg overflow-hidden group"
           >
             <img
@@ -194,6 +186,15 @@ watch(search, (value) => {
                   <font-awesome-icon
                       v-else
                       :icon="['fas', 'link']"
+                      class="text-gray-600"
+                  />
+                </button>
+                <button
+                    class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors md:hidden"
+                    @click="openFile($event, file.url, true)"
+                >
+                  <font-awesome-icon
+                      :icon="['fas', 'eye']"
                       class="text-gray-600"
                   />
                 </button>

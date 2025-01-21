@@ -39,7 +39,8 @@ import {
     faFileVideo,
     faFile,
     faFileImage,
-    faTrash
+    faTrash,
+    faEye
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faChevronDown,
@@ -68,7 +69,8 @@ library.add(faChevronDown,
     faFileVideo,
     faFile,
     faFileImage,
-    faTrash
+    faTrash,
+    faEye
 )
 
 const savedLanguage = localStorage.getItem('language')
