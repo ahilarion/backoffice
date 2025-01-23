@@ -10,6 +10,9 @@ import router from './router'
 import en from './locales/en.json'
 import fr from './locales/fr.json'
 
+import Vue3Toastify from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
@@ -92,5 +95,6 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(i18n)
 app.use(createPinia())
 app.use(router)
+app.use(Vue3Toastify)
 
 app.mount('#app')
