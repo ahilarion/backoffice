@@ -112,6 +112,30 @@ export const useUsersStore = defineStore('users', {
             }
         },
 
+        async changeUserRole(id: string, role: string) {
+            try {
+                this.loading = true
+                await usersModule.changeUserRole(id, role)
+            } catch (error: any) {
+                this.error = error.response?.data?.message
+                throw error
+            } finally {
+                this.loading = false
+            }
+        },
+
+        async requestPasswordReset(uuid: string) {
+            try {
+                this.loading = true
+                await usersModule.requestPasswordReset(uuid)
+            } catch (error: any) {
+                this.error = error.response?.data?.message
+                throw error
+            } finally {
+                this.loading = false
+            }
+        },
+
         async deleteUser(id: string) {
             try {
                 this.loading = true

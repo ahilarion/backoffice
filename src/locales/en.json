@@ -5,7 +5,8 @@
   },
   "common": {
     "roles": {
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "user": "User"
     },
     "actions": {
       "back": "Back",
@@ -15,7 +16,8 @@
       "delete": "Delete",
       "save": "Save",
       "cancel": "Cancel",
-      "crop": "Crop Image"
+      "crop": "Crop Image",
+      "select": "Select"
     },
     "pagination": {
       "previous": "Previous",
@@ -83,6 +85,9 @@
         "confirmPasswordPlaceholder": "Confirm your new password",
         "submit": "Change Password"
       }
+    },
+    "passwordReset": {
+      "title": "Réinitialiser le mot de passe"
     },
     "roleCreate": {
       "title": "Create Role",

@@ -5,7 +5,8 @@
   },
   "common": {
     "roles": {
-      "admin": "Administrateur"
+      "admin": "Administrateur",
+      "user": "Utilisateur"
     },
     "actions": {
       "back": "Retour",
@@ -16,7 +17,8 @@
       "save": "Enregistrer",
       "cancel": "Annuler",
       "upload": "Téléverser",
-      "crop": "Rogner l'image"
+      "crop": "Rogner l'image",
+      "select": "Sélectionner"
     },
     "pagination": {
       "previous": "Précédent",
@@ -84,6 +86,11 @@
         "confirmPasswordPlaceholder": "Confirmez votre nouveau mot de passe",
         "submit": "Changer le mot de passe"
       }
+    },
+    "passwordReset": {
+      "title": "Réinitialiser le mot de passe",
+      "description": "L'utilisateur recevra un email avec un lien pour réinitialiser son mot de passe",
+      "submit": "Envoyer l'email"
     },
     "roleCreate": {
       "title": "Créer un rôle",
@@ -222,6 +229,17 @@
           "language": "Langue",
           "submit": "Enregistrer les modifications"
         }
+      }
+    },
+    "user": {
+      "title": "Modifier l'utilisateur",
+      "form": {
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "email": "Adresse email",
+        "roles": "Rôles",
+        "resetPassword": "Réinitialiser le mot de passe",
+        "submit": "Enregistrer les modifications"
       }
     },
     "users": {

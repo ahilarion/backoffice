@@ -8,7 +8,7 @@ export interface User {
     profile_picture: string
     email: string
     locale: string
-    roles?: string[]
+    role: string
     created_at: string
     updated_at: string
 }
@@ -63,6 +63,14 @@ export const usersModule = {
             password: password,
             password_confirmation: passwordConfirmation
         })
+    },
+
+    requestPasswordReset(id: string) {
+        return api.post<{success: boolean}>(`/users/${id}/request-password-reset`)
+    },
+
+    changeUserRole(id: string, role: string) {
+        return api.put<{success: boolean}>(`/users/${id}/change-role`, { role })
     },
 
     deleteUser(id: string) {

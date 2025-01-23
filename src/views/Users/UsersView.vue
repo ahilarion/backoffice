@@ -10,9 +10,11 @@ import CustomHeaderItem from "@/components/table/CustomHeaderItem.vue";
 import CustomHeader from "@/components/table/CustomHeader.vue";
 import CustomPagination from "@/components/table/CustomPagination.vue";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 
 const router = useRouter();
 const usersStore = useUsersStore();
+const authStore = useAuthStore();
 const search = ref<string>('');
 const users = computed(() => usersStore.users);
 
@@ -39,18 +41,22 @@ const handleNext = async () => {
 
 const handleRowClick = (e: MouseEvent, uuid: string) => {
   if ((e.target as HTMLElement).tagName !== 'A') {
-    router.push(`/users/${uuid}`);
+    if (uuid === authStore.user?.id) {
+      router.push('/settings');
+    } else {
+      router.push(`/users/${uuid}`);
+    }
   }
 }
 
 // Function to determine styling based on role
-const getRoleClass = (roles: string[]) => {
-  if (roles.includes("admin")) {
+const getRoleClass = (role: string) => {
+  if (role === "admin") {
     return "bg-red-100 text-red-800";
-  } else if (roles.includes("user")) {
+  } else if (role === "user") {
     return "bg-green-100 text-green-800";
   }
-  return "bg-gray-100 text-gray-800"; // Default class for other roles
+  return "bg-gray-100 text-gray-800";
 }
 
 onMounted(async () => {
@@ -125,10 +131,10 @@ watch(search, (value) => {
             </CustomRowItem>
             <CustomRowItem>
               <span
-                  :class="getRoleClass(user.roles as string[])"
+                  :class="getRoleClass(user.role as string)"
                   class="px-2 py-1 rounded-full"
               >
-                {{ user.roles?.join(', ') }}
+                {{ $t(`common.roles.${user.role}`) }}
               </span>
             </CustomRowItem>
           </CustomRow>
