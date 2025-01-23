@@ -7,7 +7,6 @@ import FormInput from "@/components/form/FormInput.vue";
 import FormSubmitButton from "@/components/form/FormSubmitButton.vue";
 import ActionButton from "@/components/commons/ActionButton.vue";
 import Modal from "@/components/modals/Modal.vue";
-import PasswordChangeForm from "@/components/form/PasswordChangeForm.vue";
 import ImageCropForm from "@/components/form/ImageCropForm.vue";
 import FormDropdown from "@/components/form/FormDropdown.vue";
 import defaultProfileImage from '@/assets/profile.png';
