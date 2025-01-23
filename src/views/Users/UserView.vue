@@ -46,10 +46,7 @@ const handleSave = () => {
     last_name: lastName.value,
     email: email.value,
     locale: userLocale.value,
-  }, selectedImageFile.value as File).then(() => {
-    usersStore.changeUserRole(userId, selectedRole.value);
-    router.push('/users');
-  });
+  }, selectedImageFile.value as File, selectedRole.value)
 };
 
 const handleCrop = (croppedImage: string) => {
@@ -91,6 +88,12 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div class="w-full flex justify-items-start items-center gap-4 mb-4">
+    <button @click="router.go(-1)" class="flex items-center gap-2 text-base text-gray-500 hover:text-gray-700">
+      <font-awesome-icon :icon="['fas', 'arrow-left']" />
+      <span>{{ $t('common.actions.back') }}</span>
+    </button>
+  </div>
   <div class="flex flex-col rounded-lg bg-base-100 shadow-sm">
     <img src="../../assets/auth-background.jpg" alt="banner" class="rounded-t-lg object-cover h-48 w-full" />
     <div class="relative h-16">

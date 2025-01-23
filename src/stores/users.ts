@@ -77,7 +77,7 @@ export const useUsersStore = defineStore('users', {
             }
         },
 
-        async updateUser(id: string, userData: Partial<User>, profilePicture?: File) {
+        async updateUser(id: string, userData: Partial<User>, profilePicture?: File, role?: string) {
             try {
                 this.loading = true
 
@@ -85,13 +85,11 @@ export const useUsersStore = defineStore('users', {
                     await usersModule.updateProfilePicture(id, profilePicture)
                 }
 
-                const response = await usersModule.updateUser(id, userData)
-
-                const index = this.users.findIndex(user => user.id === id)
-                if (index !== -1) {
-                    this.users[index] = response.data.data
+                if (role) {
+                    await usersModule.changeUserRole(id, role)
                 }
-                return response.data.data
+
+                await usersModule.updateUser(id, userData)
             } catch (error: any) {
                 this.error = error.response?.data?.message
                 throw error
@@ -104,18 +102,6 @@ export const useUsersStore = defineStore('users', {
             try {
                 this.loading = true
                 await usersModule.changePassword(id, currentPassword, password, passwordConfirmation)
-            } catch (error: any) {
-                this.error = error.response?.data?.message
-                throw error
-            } finally {
-                this.loading = false
-            }
-        },
-
-        async changeUserRole(id: string, role: string) {
-            try {
-                this.loading = true
-                await usersModule.changeUserRole(id, role)
             } catch (error: any) {
                 this.error = error.response?.data?.message
                 throw error
