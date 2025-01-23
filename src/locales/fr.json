@@ -103,11 +103,11 @@
       }
     },
     "permissionCreate": {
-      "title": "Create Permission",
+      "title": "Créer une permission",
       "form": {
-        "name": "Name",
-        "namePlaceholder": "Enter permission name",
-        "submit": "Create Permission"
+        "name": "Nom",
+        "namePlaceholder": "Entrez le nom de la permission",
+        "submit": "Créer la permission"
       }
     },
     "roleEdit": {
@@ -238,6 +238,7 @@
         "lastName": "Nom",
         "email": "Adresse email",
         "roles": "Rôles",
+        "language": "Langue",
         "resetPassword": "Réinitialiser le mot de passe",
         "submit": "Enregistrer les modifications"
       }

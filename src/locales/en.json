@@ -16,6 +16,7 @@
       "delete": "Delete",
       "save": "Save",
       "cancel": "Cancel",
+      "upload": "Upload",
       "crop": "Crop Image",
       "select": "Select"
     },
@@ -87,7 +88,9 @@
       }
     },
     "passwordReset": {
-      "title": "Réinitialiser le mot de passe"
+      "title": "Reset Password",
+      "description": "The user will receive an email with a link to reset their password",
+      "submit": "Send Email"
     },
     "roleCreate": {
       "title": "Create Role",
@@ -108,7 +111,12 @@
       }
     },
     "roleEdit": {
-      "title": "Edit Role"
+      "title": "Do you want to edit this role?",
+      "submit": "Edit Role"
+    },
+    "roleDelete": {
+      "title": "Are you sure you want to delete this role?",
+      "submit": "Delete Role"
     },
     "articleCreate": {
       "title": "Create Article",
@@ -221,6 +229,18 @@
           "language": "Language",
           "submit": "Save Changes"
         }
+      }
+    },
+    "user": {
+      "title": "Edit User",
+      "form": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email Address",
+        "roles": "Roles",
+        "language": "Language",
+        "resetPassword": "Reset Password",
+        "submit": "Save Changes"
       }
     },
     "users": {
