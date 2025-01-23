@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUsersStore } from '@/stores/users';
 import { useRolesStore } from '@/stores/roles';
+import { useI18n } from 'vue-i18n';
 import FormInput from "@/components/form/FormInput.vue";
 import FormSubmitButton from "@/components/form/FormSubmitButton.vue";
 import ActionButton from "@/components/commons/ActionButton.vue";
@@ -12,6 +13,7 @@ import FormDropdown from "@/components/form/FormDropdown.vue";
 import defaultProfileImage from '@/assets/profile.png';
 import PasswordResetForm from "@/components/form/PasswordResetForm.vue";
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const usersStore = useUsersStore();
@@ -27,6 +29,12 @@ const isPasswordResetModalVisible = ref(false);
 const isImageCropModalVisible = ref(false);
 const selectedImageFile = ref<File | null>(null);
 const selectedRole = ref('');
+const userLocale = ref('fr');
+
+const options = [
+  { value: 'en', label: t('languages.english') },
+  { value: 'fr', label: t('languages.french') },
+];
 
 const handlePasswordReset = () => {
   isPasswordResetModalVisible.value = true;
@@ -37,6 +45,7 @@ const handleSave = () => {
     first_name: firstName.value,
     last_name: lastName.value,
     email: email.value,
+    locale: userLocale.value,
   }, selectedImageFile.value as File).then(() => {
     usersStore.changeUserRole(userId, selectedRole.value);
     router.push('/users');
@@ -77,6 +86,7 @@ onMounted(async () => {
   email.value = user.value?.email || '';
   profileImage.value = user.value?.profile_picture || defaultProfileImage;
   selectedRole.value = user.value?.role || '';
+  userLocale.value = user.value?.locale || 'fr';
 });
 </script>
 
@@ -99,6 +109,7 @@ onMounted(async () => {
         </div>
         <FormInput :label="$t('pages.user.form.email')" type="email" v-model="email" required placeholder="Enter your email" />
         <FormDropdown :label="$t('pages.user.form.roles')" v-model="selectedRole" :options="rolesStore.roles.map(role => ({ value: role.name, label: $t(`common.roles.${role.name}`) }))" required />
+        <FormDropdown :label="$t('pages.user.form.language')" v-model="userLocale" :options="options" required />
         <ActionButton :label="$t('pages.user.form.resetPassword')" @click="handlePasswordReset" white id="change-password" />
         <FormSubmitButton :loading="usersStore.loading" :label="$t('pages.settings.myAccount.form.submit')" />
       </form>
@@ -121,7 +132,3 @@ onMounted(async () => {
     <ImageCropForm :image-file="selectedImageFile" @close="isImageCropModalVisible = false" @crop="handleCrop" />
   </Modal>
 </template>
-
-<style scoped>
-
-</style>
