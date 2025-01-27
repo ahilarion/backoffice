@@ -20,7 +20,11 @@ const currentPage = computed(() => filesStore.pagination.currentPage);
 const total = computed(() => filesStore.pagination.total);
 const perPage = computed(() => filesStore.pagination.perPage);
 
+const currentFileId = ref<string | null>(null);
+const currentFileExtension = ref<string | null>(null);
+
 const isFileUploadModalOpen = ref(false);
+const isFileReplaceModalOpen = ref(false);
 
 const handlePrev = async () => {
   if (currentPage.value > 1) {
@@ -105,6 +109,13 @@ const openFile = (e: MouseEvent, url: string, eyedButton: boolean = false) => {
   }
 };
 
+const replaceFile = (e: MouseEvent, id: string, extension: string) => {
+  e.stopPropagation();
+  currentFileId.value = id;
+  currentFileExtension.value = extension;
+  openFileReplaceModal();
+};
+
 const isMobile = () => {
   return window.innerWidth <= 1024;
 };
@@ -125,6 +136,17 @@ const openFileUploadModal = () => {
   isFileUploadModalOpen.value = true;
 };
 
+const openFileReplaceModal = () => {
+  isFileReplaceModalOpen.value = true;
+};
+
+const closeFileReplaceModal = () => {
+  isFileReplaceModalOpen.value = false;
+
+  // Recharger uniquement l'aperçu de l'image
+  document.getElementById(currentFileId.value || '')?.querySelector('img')?.setAttribute('src', files.value.find(f => f.id === currentFileId.value)?.url || '');
+};
+
 onMounted(async () => {
   await filesStore.fetchFiles(1);
 });
@@ -132,6 +154,7 @@ onMounted(async () => {
 watch(search, (value) => {
   // Logic to watch search changes
 });
+
 </script>
 
 <template>
@@ -160,6 +183,7 @@ watch(search, (value) => {
           <div
               v-for="file in files"
               :key="file.id"
+              :id="file.id"
               @click="openFile($event, file.url)"
               class="relative flex items-center justify-center w-full h-52 border rounded-lg overflow-hidden group"
           >
@@ -187,7 +211,14 @@ watch(search, (value) => {
                 >
                   <font-awesome-icon
                       :icon="['fas', 'trash']"
+                      class="text-gray-600"
                   />
+                </button>
+                <button
+                    class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors"
+                    @click="replaceFile($event, file.id, file.extension)"
+                >
+                  <font-awesome-icon :icon="['fas', 'repeat']" class="text-gray-600" />
                 </button>
                 <button
                     class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors"
@@ -206,7 +237,7 @@ watch(search, (value) => {
                 </button>
                 <button
                     class="w-8 h-8 flex items-center justify-center bg-white hover:bg-gray-200 rounded-lg shadow-md transition-colors md:hidden"
-                    @click="openFile($event, file.url, true)"
+                    @click="openFile($event, file.id, true)"
                 >
                   <font-awesome-icon
                       :icon="['fas', 'eye']"
@@ -231,5 +262,9 @@ watch(search, (value) => {
 
   <Modal v-bind:visible="isFileUploadModalOpen" v-on:close="closeFileUploadModal" :title="$t('modals.uploadFile.title')">
     <FileUploadForm @close="closeFileUploadModal" />
+  </Modal>
+
+  <Modal v-bind:visible="isFileReplaceModalOpen" v-on:close="closeFileReplaceModal" :title="$t('modals.replaceFile.title')">
+    <FileUploadForm @close="closeFileReplaceModal" :replace="true" :currentFileId="currentFileId as string" :currentFileExtension="currentFileExtension as string" />
   </Modal>
 </template>

@@ -11,6 +11,11 @@ const selectedFile = ref<File | null>(null);
 const fileInput = ref<HTMLInputElement | null>(null);
 const errorMessage = ref<string | null>(null);
 
+const props = defineProps<{
+  replace?: boolean;
+  currentFileId?: string;
+  currentFileExtension?: string;
+}>();
 const handleDrop = (event: DragEvent) => {
   event.preventDefault();
   dragOver.value = false;
@@ -38,8 +43,11 @@ const handleFileChange = (event: Event) => {
   const target = event.target as HTMLInputElement;
   if (target.files?.length) {
     const file = target.files[0];
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
     if (file.size > 5 * 1024 * 1024) {
       errorMessage.value = 'File size exceeds 5 MB';
+    } else if (props.replace && fileExtension !== props.currentFileExtension?.toLowerCase()) {
+      errorMessage.value = `File extension must be .${props.currentFileExtension}`;
     } else {
       selectedFile.value = file;
       errorMessage.value = null;
@@ -50,6 +58,15 @@ const handleFileChange = (event: Event) => {
 const handleUpload = async () => {
   if (selectedFile.value) {
     await filesStore.uploadFile(selectedFile.value).then(() => {
+      filesStore.fetchFiles(filesStore.pagination.currentPage);
+      emit('close');
+    });
+  }
+};
+
+const handleReplaceUpload = async () => {
+  if (selectedFile.value) {
+    await filesStore.replaceFile(props.currentFileId || '', selectedFile.value).then(() => {
       filesStore.fetchFiles(filesStore.pagination.currentPage);
       emit('close');
     });
@@ -139,8 +156,16 @@ const formatFileSize = (size: number) => {
     </transition>
 
     <ActionButton
+        v-if="!replace"
         :label="$t('common.actions.upload')"
         @click="handleUpload"
+        :disabled="!selectedFile"
+    />
+
+    <ActionButton
+        v-else
+        :label="$t('common.actions.replace')"
+        @click="handleReplaceUpload"
         :disabled="!selectedFile"
     />
   </div>

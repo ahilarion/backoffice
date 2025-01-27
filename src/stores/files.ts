@@ -63,6 +63,18 @@ export const useFilesStore = defineStore('files', {
             }
         },
 
+        async replaceFile(id: string, file : globalThis.File) {
+            try {
+                this.loading = true
+                await filesModule.replaceFile(id, file)
+            } catch (error: any) {
+                this.error = error.response?.data?.message
+                throw error
+            } finally {
+                this.loading = false
+            }
+        },
+
         async deleteFile(id: string) {
             try {
                 this.loading = true

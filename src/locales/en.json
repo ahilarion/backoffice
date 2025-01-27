@@ -18,7 +18,8 @@
       "cancel": "Cancel",
       "upload": "Upload",
       "crop": "Crop Image",
-      "select": "Select"
+      "select": "Select",
+      "replace": "Remplacer"
     },
     "pagination": {
       "previous": "Previous",
@@ -74,6 +75,9 @@
       "title": "Upload File",
       "description": "Drag and drop a file or click to upload",
       "submit": "Upload"
+    },
+    "replaceFile": {
+      "title": "Replace File"
     },
     "passwordChange": {
       "title": "Change Password",

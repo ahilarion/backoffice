@@ -45,6 +45,16 @@ export const filesModule = {
         });
     },
 
+    replaceFile(id: string, file : globalThis.File) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        return api.post('files/replace/' + id, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+    },
 
     deleteFile(id: string) {
         return api.delete<{success: boolean}>(`/files/${id}`)
