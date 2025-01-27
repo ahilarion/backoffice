@@ -118,6 +118,16 @@
       "title": "Are you sure you want to delete this role?",
       "submit": "Delete Role"
     },
+    "FAQCreate": {
+      "title": "Create FAQ",
+      "form": {
+        "question": "Question",
+        "questionPlaceholder": "Enter question",
+        "answer": "Answer",
+        "answerPlaceholder": "Enter answer",
+        "submit": "Create FAQ"
+      }
+    },
     "articleCreate": {
       "title": "Create Article",
       "form": {
@@ -281,6 +291,16 @@
     },
     "slides": {
       "title": "Carousel"
+    },
+    "FAQ": {
+      "title": "FAQ",
+        "list": {
+          "title": "All FAQ",
+          "columns": {
+            "question": "Question",
+            "createdAt": "Created At"
+          }
+        }
     }
   }
 }

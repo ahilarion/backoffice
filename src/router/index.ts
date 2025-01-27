@@ -67,6 +67,11 @@ const router = createRouter({
           component: () => import('@/views/SlidesView.vue')
         },
         {
+          path: 'faq',
+          name: 'FAQ',
+          component: () => import('@/views/FAQ/FAQView.vue')
+        },
+        {
           path: 'settings',
           name: 'Settings',
           component: () => import('@/views/Settings/SettingsView.vue'),

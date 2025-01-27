@@ -118,6 +118,16 @@
       "title": "Voulez-vous vraiment supprimer ce rôle ?",
       "submit": "Supprimer le rôle"
     },
+    "FAQCreate": {
+      "title": "Créer une FAQ",
+      "form": {
+        "question": "Question",
+        "questionPlaceholder": "Entrez la question",
+        "answer": "Réponse",
+        "answerPlaceholder": "Entrez la réponse",
+        "submit": "Créer la FAQ"
+      }
+    },
     "articleCreate": {
       "title": "Créer un article",
       "form": {
@@ -281,6 +291,16 @@
     },
     "slides": {
       "title": "Carrousel"
+    },
+    "FAQ": {
+      "title": "FAQ",
+      "list": {
+        "title": "Toutes les FAQ",
+        "columns": {
+          "question": "Question",
+          "createdAt": "Créé le"
+        }
+      }
     }
   }
 }
