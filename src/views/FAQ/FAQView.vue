@@ -11,6 +11,7 @@ import CustomHeader from "@/components/table/CustomHeader.vue";
 import CustomPagination from "@/components/table/CustomPagination.vue";
 import { useRouter } from "vue-router";
 import FAQCreationForm from "@/components/form/FAQCreationForm.vue";
+import FAQEditionForm from "@/components/form/FAQEditionForm.vue";
 import Modal from "@/components/modals/Modal.vue";
 
 const router = useRouter();
@@ -18,6 +19,7 @@ const FAQStore = useFAQStore();
 const search = ref<string>('');
 const FAQ = computed(() => FAQStore.faq);
 const isFaqCreationModalOpen = ref(false);
+const isFaqEditModal = ref(false);
 
 const currentPage = computed(() => FAQStore.pagination.currentPage);
 const total = computed(() => FAQStore.pagination.total);
@@ -38,7 +40,7 @@ const handleNext = async () => {
 const handleRowClick = (e: MouseEvent, uuid: string) => {
   if ((e.target as HTMLElement).tagName !== 'A') {
     FAQStore.fetchFAQItem(uuid).then(() => {
-
+      openFaqEditModal();
     });
   }
 }
@@ -49,6 +51,14 @@ const closeFaqCreationModal = () => {
 
 const openPermissionModal = () => {
   isFaqCreationModalOpen.value = true;
+}
+
+const closeFaqEditModal = () => {
+  isFaqEditModal.value = false;
+}
+
+const openFaqEditModal = () => {
+  isFaqEditModal.value = true;
 }
 
 onMounted(async () => {
@@ -103,6 +113,9 @@ watch(search, (value) => {
   </div>
   <Modal v-bind:visible="isFaqCreationModalOpen" v-on:close="closeFaqCreationModal" :title="$t('modals.FAQCreate.title')">
     <FAQCreationForm @close="closeFaqCreationModal" />
+  </Modal>
+  <Modal v-bind:visible="isFaqEditModal" v-on:close="closeFaqEditModal" :title="$t('modals.FAQEdit.title')">
+    <FAQEditionForm @close="closeFaqEditModal" />
   </Modal>
 </template>
 

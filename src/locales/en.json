@@ -128,6 +128,17 @@
         "submit": "Create FAQ"
       }
     },
+    "FAQEdit": {
+      "title": "Edit FAQ",
+      "form": {
+        "question": "Question",
+        "questionPlaceholder": "Enter question",
+        "answer": "Answer",
+        "answerPlaceholder": "Enter answer",
+        "submit": "Save Changes",
+        "delete": "Delete FAQ"
+      }
+    },
     "articleCreate": {
       "title": "Create Article",
       "form": {

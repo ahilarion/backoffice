@@ -128,6 +128,17 @@
         "submit": "Créer la FAQ"
       }
     },
+    "FAQEdit": {
+      "title": "Modifier la FAQ",
+      "form": {
+        "question": "Question",
+        "questionPlaceholder": "Entrez la question",
+        "answer": "Réponse",
+        "answerPlaceholder": "Entrez la réponse",
+        "submit": "Sauvegarder les modifications",
+        "delete": "Supprimer la FAQ"
+      }
+    },
     "articleCreate": {
       "title": "Créer un article",
       "form": {

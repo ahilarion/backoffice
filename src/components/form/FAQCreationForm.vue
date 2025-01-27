@@ -53,6 +53,7 @@ const handleSubmit = async () => {
         v-model="FAQAnswer"
         required
         :placeholder="$t('modals.FAQCreate.form.answerPlaceholder')"
+        :max-length="500"
         type="textarea"
       />
       
