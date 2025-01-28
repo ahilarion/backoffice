@@ -71,7 +71,7 @@ watch(search, (value) => {
         <h1 class="text-3xl font-semibold">{{ $t('pages.roles.title') }}</h1>
         <div class="flex flex-wrap gap-4">
           <SearchInput v-model="search" :placeholder="$t('common.actions.search')" />
-          <ActionButton disabled @action="openRoleModal" :label="$t('common.actions.add')" />
+          <ActionButton @action="openRoleModal" :label="$t('common.actions.add')" />
         </div>
       </div>
 

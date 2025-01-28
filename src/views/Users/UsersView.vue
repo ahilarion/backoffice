@@ -79,7 +79,7 @@ watch(search, (value) => {
         <h1 class="text-3xl font-semibold">{{ $t('pages.users.title') }}</h1>
         <div class="flex flex-wrap gap-4">
           <SearchInput v-model="search" :placeholder="$t('common.actions.search')" />
-          <ActionButton @action="handleAction" :label="$t('common.actions.add')" />
+          <ActionButton disabled @action="handleAction" :label="$t('common.actions.add')" />
         </div>
       </div>
 
