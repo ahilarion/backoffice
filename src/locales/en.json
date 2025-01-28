@@ -21,6 +21,9 @@
       "select": "Select",
       "replace": "Remplacer"
     },
+    "table": {
+      "noData": "No data available"
+    },
     "pagination": {
       "previous": "Previous",
       "next": "Next",

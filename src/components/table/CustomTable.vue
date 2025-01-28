@@ -27,7 +27,7 @@ const props = defineProps<{
           </tr>
           <tr v-else-if="!props.loading && count === 0" class="h-96">
             <td class="text-center align-middle w-full" :colspan="5">
-              <p class="text-gray-500">No data available</p>
+              <p class="text-gray-500">{{ $t('common.table.noData') }}</p>
             </td>
           </tr>
           <slot name="body" v-else></slot>
