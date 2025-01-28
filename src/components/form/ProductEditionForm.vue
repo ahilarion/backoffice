@@ -49,6 +49,7 @@ const handleSubmit = async () => {
     certifications: certifications.value.trim(),
     thumbnail_url: thumbnail_url.value.trim(),
   }).then(() => {
+    productsStore.fetchProducts(productsStore.pagination.currentPage);
     emit("close");
   }).catch((error) => {
     formError.value = error.message;
