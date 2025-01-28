@@ -122,6 +122,50 @@
       "title": "Are you sure you want to delete this role?",
       "submit": "Delete Role"
     },
+    "productCreate": {
+      "title": "Create Product",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Enter product name",
+        "type": "Type",
+        "typePlaceholder": "Enter product type",
+        "brand": "Brand",
+        "brandPlaceholder": "Enter product brand",
+        "model": "Model",
+        "modelPlaceholder": "Enter product model",
+        "dimensions": "Dimensions",
+        "dimensionsPlaceholder": "Enter product dimensions",
+        "weight": "Weight",
+        "weightPlaceholder": "Enter product weight",
+        "certification": "Certification",
+        "certificationPlaceholder": "Enter product certification",
+        "thumbnailUrl": "Thumbnail URL",
+        "thumbnailUrlPlaceholder": "Enter thumbnail URL",
+        "submit": "Create Product"
+      }
+    },
+    "productEdit": {
+      "title": "Edit Product",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Enter product name",
+        "type": "Type",
+        "typePlaceholder": "Enter product type",
+        "brand": "Brand",
+        "brandPlaceholder": "Enter product brand",
+        "model": "Model",
+        "modelPlaceholder": "Enter product model",
+        "dimensions": "Dimensions",
+        "dimensionsPlaceholder": "Enter product dimensions",
+        "weight": "Weight",
+        "weightPlaceholder": "Enter product weight",
+        "certification": "Certification",
+        "certificationPlaceholder": "Enter product certification",
+        "thumbnailUrl": "Thumbnail URL",
+        "thumbnailUrlPlaceholder": "Enter thumbnail URL",
+        "submit": "Save Changes"
+      }
+    },
     "FAQCreate": {
       "title": "Create FAQ",
       "form": {
@@ -307,15 +351,27 @@
     "slides": {
       "title": "Carousel"
     },
+    "products": {
+      "title": "Products",
+      "list": {
+        "title": "All Products",
+        "columns": {
+          "name": "Name",
+          "brand": "Brand",
+          "type": "Type",
+          "createdAt": "Created At"
+        }
+      }
+    },
     "FAQ": {
       "title": "FAQ",
-        "list": {
-          "title": "All FAQ",
-          "columns": {
-            "question": "Question",
-            "createdAt": "Created At"
-          }
+      "list": {
+        "title": "All FAQ",
+        "columns": {
+          "question": "Question",
+          "createdAt": "Created At"
         }
+      }
     }
   }
 }

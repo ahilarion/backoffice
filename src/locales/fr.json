@@ -122,6 +122,50 @@
       "title": "Voulez-vous vraiment supprimer ce rôle ?",
       "submit": "Supprimer le rôle"
     },
+    "productCreate": {
+      "title": "Créer un produit",
+      "form": {
+        "name": "Nom",
+        "namePlaceholder": "Entrez le nom du produit",
+        "type": "Type",
+        "typePlaceholder": "Entrez le type du produit",
+        "brand": "Marque",
+        "brandPlaceholder": "Entrez la marque du produit",
+        "model": "Modèle",
+        "modelPlaceholder": "Entrez le modèle du produit",
+        "dimensions": "Dimensions",
+        "dimensionsPlaceholder": "Entrez les dimensions du produit",
+        "weight": "Poids",
+        "weightPlaceholder": "Entrez le poids du produit",
+        "certification": "Certifications",
+        "certificationPlaceholder": "Entrez les certifications du produit",
+        "thumbnailUrl": "URL de la miniature",
+        "thumbnailUrlPlaceholder": "Entrez l'URL de la miniature",
+        "submit": "Créer le produit"
+      }
+    },
+    "productEdit": {
+      "title": "Modifier le produit",
+      "form": {
+        "name": "Nom",
+        "namePlaceholder": "Entrez le nom du produit",
+        "type": "Type",
+        "typePlaceholder": "Entrez le type du produit",
+        "brand": "Marque",
+        "brandPlaceholder": "Entrez la marque du produit",
+        "model": "Modèle",
+        "modelPlaceholder": "Entrez le modèle du produit",
+        "dimensions": "Dimensions",
+        "dimensionsPlaceholder": "Entrez les dimensions du produit",
+        "weight": "Poids",
+        "weightPlaceholder": "Entrez le poids du produit",
+        "certification": "Certifications",
+        "certificationPlaceholder": "Entrez les certifications du produit",
+        "thumbnailUrl": "URL de la miniature",
+        "thumbnailUrlPlaceholder": "Entrez l'URL de la miniature",
+        "submit": "Enregistrer les modifications"
+      }
+    },
     "FAQCreate": {
       "title": "Créer une FAQ",
       "form": {
@@ -307,11 +351,23 @@
     "slides": {
       "title": "Carrousel"
     },
+    "products": {
+      "title": "Produits",
+      "list": {
+        "title": "Tous les produits",
+        "columns": {
+          "name": "Nom",
+          "brand": "Marque",
+          "type": "Type",
+          "createdAt": "Créé le"
+        }
+      }
+    },
     "FAQ": {
       "title": "FAQ",
       "list": {
-        "title": "Toutes les FAQ",
-        "columns": {
+      "title": "Toutes les FAQ",
+      "columns": {
           "question": "Question",
           "createdAt": "Créé le"
         }
