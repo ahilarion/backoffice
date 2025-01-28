@@ -70,8 +70,7 @@ export const useProductsStore = defineStore('products', {
         async createProduct(productData: Partial<Product>) {
             try {
                 this.loading = true
-                const response = await productsModule.createProduct(productData)
-                this.products.push(response.data.data)
+                await productsModule.createProduct(productData)
 
                 this.error = null
             } catch (error: any) {
@@ -85,9 +84,7 @@ export const useProductsStore = defineStore('products', {
         async updateProduct(productId: string, productData: Partial<Product>) {
             try {
                 this.loading = true
-                const response = await productsModule.updateProduct(productId, productData)
-                const index = this.products.findIndex(product => product.id === response.data.data.id)
-                this.products[index] = response.data.data
+                await productsModule.updateProduct(productId, productData)
 
                 this.error = null
             } catch (error: any) {
@@ -102,7 +99,6 @@ export const useProductsStore = defineStore('products', {
             try {
                 this.loading = true
                 await productsModule.deleteProduct(productId)
-                this.products = this.products.filter(product => product.id !== productId)
 
                 this.error = null
             } catch (error: any) {
